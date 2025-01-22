@@ -23,7 +23,7 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
   var erros = 0;
   var i = 0;
 
-  void addNumbersGame() {
+  void subtractionNumbersGame() {
     final String somaText = _subController.text;
     final int soma = int.tryParse(somaText) ?? 0;
 
@@ -67,7 +67,7 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
-                  onPressed: addNumbersGame
+                  onPressed: subtractionNumbersGame
               ),
               SizedBox(height: 20),
               if (_resultado.isNotEmpty)

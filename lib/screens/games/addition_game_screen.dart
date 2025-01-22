@@ -99,53 +99,56 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
               ),
             SizedBox(height: 20),
             if (contador == 10)
-              Column(
-                children: [
-                  Text(
-                    "Fim do jogo",
-                    style: TextStyle(
-                      fontSize: 20
+              Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Text(
+                      "Fim do jogo",
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10,),
-                  Row(
-                    children: [
-                      Text(
-                        "Acertos = ${acertos}",
-                        style: TextStyle(
-                            fontSize: 18
+                    SizedBox(height: 10,),
+                    Row(
+                      children: [
+                        Text(
+                          "Acertos = ${acertos}",
+                          style: TextStyle(
+                              fontSize: 18
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 20,),
-                      Text(
-                        "Erros = ${erros}",
-                        style: TextStyle(
-                            fontSize: 18
+                        SizedBox(width: 20,),
+                        Text(
+                          "Erros = ${erros}",
+                          style: TextStyle(
+                              fontSize: 18
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10,),
-                  ButtonCustom(
-                      textButton: "Jogar novamente",
-                      onPressed: () {
-                        setState(() {
-                          _resultado = "";
-                          _somaController.text = "";
-                          numero1 = Random().nextInt(20);
-                          numero2 = Random().nextInt(20);
-                          contador = 1;
-                        });
-                      }
-                  ),
-                  SizedBox(height: 10,),
-                  ButtonCustom(
-                      textButton: "Voltar",
-                      onPressed: () {
-                        Navigator.pop(context);
-                      }
-                  ),
-                ],
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                    ButtonCustom(
+                        textButton: "Jogar novamente",
+                        onPressed: () {
+                          setState(() {
+                            _resultado = "";
+                            _somaController.text = "";
+                            numero1 = Random().nextInt(20);
+                            numero2 = Random().nextInt(20);
+                            contador = 1;
+                          });
+                        }
+                    ),
+                    SizedBox(height: 10,),
+                    ButtonCustom(
+                        textButton: "Voltar",
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }
+                    ),
+                  ],
+                ),
               )
           ],
         ),

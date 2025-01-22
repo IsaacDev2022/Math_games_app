@@ -23,7 +23,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
   var erros = 0;
   var i = 0;
 
-  void addNumbersGame() {
+  void multiplicationNumbersGame() {
     final String somaText = _multController.text;
     final int soma = int.tryParse(somaText) ?? 0;
 
@@ -67,7 +67,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
-                  onPressed: addNumbersGame
+                  onPressed: multiplicationNumbersGame
               ),
               SizedBox(height: 20),
               if (_resultado.isNotEmpty)

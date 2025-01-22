@@ -23,7 +23,7 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
   var erros = 0;
   var i = 0;
 
-  void addNumbersGame() {
+  void divisionNumbersGame() {
     final String somaText = _divController.text;
     final int soma = int.tryParse(somaText) ?? 0;
 
@@ -67,7 +67,7 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
-                  onPressed: addNumbersGame
+                  onPressed: divisionNumbersGame
               ),
               SizedBox(height: 20),
               if (_resultado.isNotEmpty)
