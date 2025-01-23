@@ -12,29 +12,29 @@ class AdditionGameScreen extends StatefulWidget {
 }
 
 class _AdditionGameScreenState extends State<AdditionGameScreen> {
-  final TextEditingController _somaController = TextEditingController();
-  String _resultado = "";
+  final TextEditingController _addController = TextEditingController();
+  String _result = "";
 
-  var numero1 = Random().nextInt(20);
-  var numero2 = Random().nextInt(20);
-  var contador = 1;
-  var acertos = 0;
-  var erros = 0;
+  var number1 = Random().nextInt(20);
+  var number2 = Random().nextInt(20);
+  var counter = 1;
+  var hits = 0;
+  var errors = 0;
   var i = 0;
 
   void addNumbersGame() {
-    final String somaText = _somaController.text;
-    final int soma = int.tryParse(somaText) ?? 0;
+    final String somaText = _addController.text;
+    final int add = int.tryParse(somaText) ?? 0;
 
-    if (soma == addNumbers(numero1, numero2)) {
-      acertos += 1;
+    if (add == addNumbers(number1, number2)) {
+      hits += 1;
       setState(() {
-        _resultado = "CORRETO";
+        _result = "CORRETO";
       });
     } else {
-      erros += 1;
+      errors += 1;
       setState(() {
-        _resultado = "ERRADO";
+        _result = "ERRADO";
       });
     }
   }
@@ -53,14 +53,14 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "${numero1} + ${numero2} = ?",
+              "${number1} + ${number2} = ?",
               style: TextStyle(
                 fontSize: 20
               ),
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _somaController,
+              controller: _addController,
               keyboardType: TextInputType.number,
             ),
             SizedBox(height: 20),
@@ -69,36 +69,36 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                 onPressed: addNumbersGame
             ),
             SizedBox(height: 20),
-            if (_resultado.isNotEmpty)
+            if (_result.isNotEmpty)
               Text(
-                "${numero1} + ${numero2} = ${addNumbers(numero1, numero2)} => ${_resultado}",
+                "${number1} + ${number2} = ${addNumbers(number1, number2)} => ${_result}",
                 style: TextStyle(
                     fontSize: 20
                 ),
               ),
             SizedBox(height: 20),
-            if (contador <= 10)
+            if (counter <= 10)
               Column(
                 children: [
                   ButtonCustom(
                       textButton: "Próximo",
                       onPressed: () {
                         setState(() {
-                          _resultado = "";
-                          _somaController.text = "";
-                          numero1 = Random().nextInt(20);
-                          numero2 = Random().nextInt(20);
-                          contador += 1;
+                          _result = "";
+                          _addController.text = "";
+                          number1 = Random().nextInt(20);
+                          number2 = Random().nextInt(20);
+                          counter += 1;
                           FocusScope.of(context).unfocus();
                         });
                       }
                   ),
                   SizedBox(height: 10,),
-                  Text("${contador}"),
+                  Text("${counter}"),
                 ],
               ),
             SizedBox(height: 20),
-            if (contador == 10)
+            if (counter == 10)
               Container(
                 alignment: Alignment.center,
                 child: Column(
@@ -113,14 +113,14 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                     Row(
                       children: [
                         Text(
-                          "Acertos = ${acertos}",
+                          "Acertos = ${hits}",
                           style: TextStyle(
                               fontSize: 18
                           ),
                         ),
                         SizedBox(width: 20,),
                         Text(
-                          "Erros = ${erros}",
+                          "Erros = ${errors}",
                           style: TextStyle(
                               fontSize: 18
                           ),
@@ -132,11 +132,11 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                         textButton: "Jogar novamente",
                         onPressed: () {
                           setState(() {
-                            _resultado = "";
-                            _somaController.text = "";
-                            numero1 = Random().nextInt(20);
-                            numero2 = Random().nextInt(20);
-                            contador = 1;
+                            _result = "";
+                            _addController.text = "";
+                            number1 = Random().nextInt(20);
+                            number2 = Random().nextInt(20);
+                            counter = 1;
                           });
                         }
                     ),

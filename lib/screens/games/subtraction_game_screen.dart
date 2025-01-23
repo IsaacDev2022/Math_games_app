@@ -14,33 +14,33 @@ class SubtractionGameScreen extends StatefulWidget {
 
 class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
   final TextEditingController _subController = TextEditingController();
-  String _resultado = "";
+  String _result = "";
 
-  var numero1 = Random().nextInt(20);
-  var numero2 = Random().nextInt(20);
-  var contador = 1;
-  var acertos = 0;
-  var erros = 0;
+  var number1 = Random().nextInt(20);
+  var number2 = Random().nextInt(20);
+  var counter = 1;
+  var hits = 0;
+  var errors = 0;
   var i = 0;
 
   void subtractionNumbersGame() {
-    final String somaText = _subController.text;
-    final int soma = int.tryParse(somaText) ?? 0;
+    final String subText = _subController.text;
+    final int sub = int.tryParse(subText) ?? 0;
 
-    if (soma == subNumbers(numero1, numero2)) {
-      acertos += 1;
+    if (sub == subractNumbers(number1, number2)) {
+      hits += 1;
       setState(() {
-        _resultado = "CORRETO";
+        _result = "CORRETO";
       });
     } else {
-      erros += 1;
+      errors += 1;
       setState(() {
-        _resultado = "ERRADO";
+        _result = "ERRADO";
       });
     }
   }
 
-  int subNumbers(int num1, int num2) {
+  int subractNumbers(int num1, int num2) {
     return num1 - num2;
   }
 
@@ -54,7 +54,7 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "${numero1} - ${numero2} = ?",
+                "${number1} - ${number2} = ?",
                 style: TextStyle(
                     fontSize: 20
                 ),
@@ -70,36 +70,36 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                   onPressed: subtractionNumbersGame
               ),
               SizedBox(height: 20),
-              if (_resultado.isNotEmpty)
+              if (_result.isNotEmpty)
                 Text(
-                  "${numero1} - ${numero2} = ${subNumbers(numero1, numero2)} => ${_resultado}",
+                  "${number1} - ${number2} = ${subractNumbers(number1, number2)} => ${_result}",
                   style: TextStyle(
                       fontSize: 20
                   ),
                 ),
               SizedBox(height: 20),
-              if (contador <= 10)
+              if (counter <= 10)
                 Column(
                   children: [
                     ButtonCustom(
                         textButton: "Próximo",
                         onPressed: () {
                           setState(() {
-                            _resultado = "";
+                            _result = "";
                             _subController.text = "";
-                            numero1 = Random().nextInt(20);
-                            numero2 = Random().nextInt(20);
-                            contador += 1;
+                            number1 = Random().nextInt(20);
+                            number2 = Random().nextInt(20);
+                            counter += 1;
                             FocusScope.of(context).unfocus();
                           });
                         }
                     ),
                     SizedBox(height: 10,),
-                    Text("${contador}"),
+                    Text("${counter}"),
                   ],
                 ),
               SizedBox(height: 20),
-              if (contador == 10)
+              if (counter == 10)
                 Column(
                   children: [
                     Text(
@@ -112,14 +112,14 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                     Row(
                       children: [
                         Text(
-                          "Acertos = ${acertos}",
+                          "Acertos = ${hits}",
                           style: TextStyle(
                               fontSize: 18
                           ),
                         ),
                         SizedBox(width: 20,),
                         Text(
-                          "Erros = ${erros}",
+                          "Erros = ${errors}",
                           style: TextStyle(
                               fontSize: 18
                           ),
@@ -131,11 +131,11 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                         textButton: "Jogar novamente",
                         onPressed: () {
                           setState(() {
-                            _resultado = "";
+                            _result = "";
                             _subController.text = "";
-                            numero1 = Random().nextInt(20);
-                            numero2 = Random().nextInt(20);
-                            contador = 1;
+                            number1 = Random().nextInt(20);
+                            number2 = Random().nextInt(20);
+                            counter = 1;
                           });
                         }
                     ),

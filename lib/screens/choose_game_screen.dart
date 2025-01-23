@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:math_games_app/screens/games/addition_game_screen.dart';
 import 'package:math_games_app/screens/games/division_game_screen.dart';
 import 'package:math_games_app/screens/games/multiplication_game_screen.dart';
+import 'package:math_games_app/screens/games/potentiation_game_screen.dart';
+import 'package:math_games_app/screens/games/rooting_game_screen.dart';
 import 'package:math_games_app/screens/games/subtraction_game_screen.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
 
@@ -53,6 +55,22 @@ class ChooseGameScreen extends StatelessWidget {
                 onPressed: () {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => DivisionGameScreen())
+                );
+            }),
+            SizedBox(height: 30),
+            ButtonCustom(
+                textButton: "Potenciação",
+                onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => PotentiationGameScreen())
+                );
+            }),
+            SizedBox(height: 30),
+            ButtonCustom(
+                textButton: "Radiciação",
+                onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => RootingGameScreen())
                 );
             }),
           ],
