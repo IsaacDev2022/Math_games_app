@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/button_custom.dart';
+
+import '../../../widgets/button_custom.dart';
 
 class RootingGameScreen extends StatefulWidget {
   const RootingGameScreen({super.key});

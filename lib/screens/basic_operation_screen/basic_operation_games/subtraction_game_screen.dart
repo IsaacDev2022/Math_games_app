@@ -3,18 +3,18 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/button_custom.dart';
+import '../../../widgets/button_custom.dart';
 
-class MultiplicationGameScreen extends StatefulWidget {
-  const MultiplicationGameScreen({super.key});
+class SubtractionGameScreen extends StatefulWidget {
+  const SubtractionGameScreen({super.key});
 
   @override
-  State<MultiplicationGameScreen> createState() => _MultiplicationGameScreenState();
+  State<SubtractionGameScreen> createState() => _SubtractionGameScreenState();
 }
 
-class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
-  final TextEditingController _multController = TextEditingController();
-  String _result= "";
+class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
+  final TextEditingController _subController = TextEditingController();
+  String _result = "";
 
   var number1 = Random().nextInt(20);
   var number2 = Random().nextInt(20);
@@ -23,11 +23,11 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
   var errors = 0;
   var i = 0;
 
-  void multiplicationNumbersGame() {
-    final String multText = _multController.text;
-    final int mult = int.tryParse(multText) ?? 0;
+  void subtractionNumbersGame() {
+    final String subText = _subController.text;
+    final int sub = int.tryParse(subText) ?? 0;
 
-    if (mult == multiplyNumbers(number1, number2)) {
+    if (sub == subractNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
@@ -40,8 +40,8 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
     }
   }
 
-  int multiplyNumbers(int num1, int num2) {
-    return num1 * num2;
+  int subractNumbers(int num1, int num2) {
+    return num1 - num2;
   }
 
   @override
@@ -54,25 +54,25 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "${number1} * ${number2} = ?",
+                "${number1} - ${number2} = ?",
                 style: TextStyle(
                     fontSize: 20
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: _multController,
+                controller: _subController,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
-                  onPressed: multiplicationNumbersGame
+                  onPressed: subtractionNumbersGame
               ),
               SizedBox(height: 20),
               if (_result.isNotEmpty)
                 Text(
-                  "${number1} * ${number2} = ${multiplyNumbers(number1, number2)} => ${_result}",
+                  "${number1} - ${number2} = ${subractNumbers(number1, number2)} => ${_result}",
                   style: TextStyle(
                       fontSize: 20
                   ),
@@ -86,7 +86,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _multController.text = "";
+                            _subController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter += 1;
@@ -132,7 +132,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _multController.text = "";
+                            _subController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter = 1;
@@ -154,4 +154,6 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
     );
   }
 }
+
+
 

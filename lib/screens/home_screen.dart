@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-                "Jogos de matemática",
+              "Jogos de matemática",
               style: TextStyle(
                 fontSize: 28
               ),

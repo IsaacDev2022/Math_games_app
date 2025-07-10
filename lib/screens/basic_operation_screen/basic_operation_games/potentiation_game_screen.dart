@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../widgets/button_custom.dart';
+import '../../../widgets/button_custom.dart';
 
 class PotentiationGameScreen extends StatefulWidget {
   const PotentiationGameScreen({super.key});
@@ -17,7 +17,7 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
   String _result = "";
 
   var base = Random().nextInt(20);
-  var exponent = Random().nextInt(20);
+  var exponent = Random().nextInt(10);
   var counter = 1;
   var hits = 0;
   var errors = 0;
@@ -89,7 +89,7 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
                             _result = "";
                             _powController.text = "";
                             base = Random().nextInt(20);
-                            exponent = Random().nextInt(20);
+                            exponent = Random().nextInt(10);
                             counter += 1;
                             FocusScope.of(context).unfocus();
                           });
@@ -137,7 +137,7 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
                               _result = "";
                               _powController.text = "";
                               base = Random().nextInt(20);
-                              exponent = Random().nextInt(20);
+                              exponent = Random().nextInt(10);
                               counter = 1;
                             });
                           }
