@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_games_app/screens/basic_operation_screen/basic_operations_screen.dart';
+import 'package:math_games_app/screens/fractions_screen/fractions_screen.dart';
+import 'package:math_games_app/screens/numerical_expressions_screen/numerical_expressions_screen.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
 
 class ChooseGameScreen extends StatelessWidget {
@@ -27,9 +29,20 @@ class ChooseGameScreen extends StatelessWidget {
             ButtonCustom(
                 textButton: "Jogos de Frações",
                 onPressed: () {
-
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => FractionsScreen())
+                  );
                 }
-            )
+            ),
+            SizedBox(height: 20,),
+            ButtonCustom(
+                textButton: "Jogos de Expressões Numéricas",
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => NumericalExpressionsScreen())
+                  );
+                }
+            ),
           ],
         ),
       )
