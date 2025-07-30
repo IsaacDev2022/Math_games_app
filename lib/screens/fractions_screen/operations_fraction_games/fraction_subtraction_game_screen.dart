@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../../../widgets/button_custom.dart';
 
-class FractionAdditionGameScreen extends StatefulWidget {
-  const FractionAdditionGameScreen({super.key});
+class FractionSubtractionGameScreen extends StatefulWidget {
+  const FractionSubtractionGameScreen({super.key});
 
   @override
-  State<FractionAdditionGameScreen> createState() => _FractionAdditionGameScreenState();
+  State<FractionSubtractionGameScreen> createState() => _FractionSubtractionGameScreenState();
 }
 
-class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen> {
+class _FractionSubtractionGameScreenState extends State<FractionSubtractionGameScreen> {
   final TextEditingController _numeradorController = TextEditingController();
   final TextEditingController _denominadorController = TextEditingController();
   String _result = "";
@@ -22,7 +22,6 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
   var numerador2 = Random().nextInt(10);
   var denominador2 = Random().nextInt(10);
   var resultado1 = 0;
-  var resultado2 = 0;
 
   var counter = 1;
   var hits = 0;
@@ -37,8 +36,8 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
     final int denominador = int.tryParse(denominadorText) ?? 0;
 
     if (
-    numerador == toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2) &&
-    denominador == toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2)
+    numerador == toSubtractFractionsNumerator(numerador1, numerador2, denominador1, denominador2) &&
+    denominador == toSubtractFractionsNumerator(numerador1, numerador2, denominador1, denominador2)
     ) {
       hits += 1;
       setState(() {
@@ -86,17 +85,17 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
     return mmc;
   }
 
-  toAddFractionsNumerator(
+  toSubtractFractionsNumerator(
       int numerador1,
       int numerador2,
       int denominador1,
       int denominador2
       ) {
     if (denominador1 == denominador2) {
-      resultado1 = numerador1 + numerador2;
+      resultado1 = numerador1 - numerador2;
     } else {
       var mmc = calculateMmc(denominador1, denominador2);
-      resultado1 = ((mmc / denominador1) * numerador1) + ((mmc / denominador2) * numerador2);
+      resultado1 = ((mmc / denominador1) * numerador1) - ((mmc / denominador2) * numerador2);
     }
 
     return resultado1;
@@ -119,7 +118,7 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
             ),
             SizedBox(height: 20),
             Text(
-              "+",
+              "-",
               style: TextStyle(
                   fontSize: 20
               ),
@@ -150,8 +149,8 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
             if (_result.isNotEmpty)
               Text(
                 "${numerador1} / ${denominador1} + ${numerador2} / ${denominador2} = " +
-                    "${toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2)} + " +
-                    "${toAddFractionsNumerator(denominador1, denominador2, denominador1, denominador2)} => " +
+                    "${toSubtractFractionsNumerator(numerador1, numerador2, denominador1, denominador2)} - " +
+                    "${toSubtractFractionsNumerator(denominador1, denominador2, denominador1, denominador2)} => " +
                     "${_result}",
                 style: TextStyle(
                     fontSize: 20
@@ -187,4 +186,3 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
     );
   }
 }
-
