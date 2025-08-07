@@ -110,6 +110,7 @@ class _FractionDivisionGameState extends State<FractionDivisionGameScreen> {
             SizedBox(height: 20),
             ButtonCustom(
                 textButton: "Verificar",
+                color: Color(0xFF2196F3),
                 onPressed: multiplyFractionsGame
             ),
             SizedBox(height: 20),
@@ -129,6 +130,7 @@ class _FractionDivisionGameState extends State<FractionDivisionGameScreen> {
                 children: [
                   ButtonCustom(
                       textButton: "Próximo",
+                      color: Color(0xFF2196F3),
                       onPressed: () {
                         setState(() {
                           _result = "";

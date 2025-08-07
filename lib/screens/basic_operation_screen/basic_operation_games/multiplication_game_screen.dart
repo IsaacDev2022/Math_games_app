@@ -67,6 +67,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
+                  color: Color(0xFF2196F3),
                   onPressed: multiplicationNumbersGame
               ),
               SizedBox(height: 20),
@@ -83,6 +84,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                   children: [
                     ButtonCustom(
                         textButton: "Próximo",
+                        color: Color(0xFF2196F3),
                         onPressed: () {
                           setState(() {
                             _result = "";
@@ -129,6 +131,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                     SizedBox(height: 10,),
                     ButtonCustom(
                         textButton: "Jogar novamente",
+                        color: Color(0xFF2196F3),
                         onPressed: () {
                           setState(() {
                             _result = "";
@@ -142,6 +145,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                     SizedBox(height: 10,),
                     ButtonCustom(
                         textButton: "Voltar",
+                        color: Color(0xFF2196F3),
                         onPressed: () {
                           Navigator.pop(context);
                         }

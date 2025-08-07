@@ -25,6 +25,7 @@ class NumericalExpressionsScreen extends StatelessWidget {
               SizedBox(height: 30),
               ButtonCustom(
                   textButton: "Expressões Numéricas Normais",
+                  color: Color(0xFF2196F3),
                   onPressed: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => NormalNumericExpressionsGame())
@@ -33,6 +34,7 @@ class NumericalExpressionsScreen extends StatelessWidget {
               SizedBox(height: 30),
               ButtonCustom(
                   textButton: "Exepressões Numéricas Com Símbolos",
+                  color: Color(0xFF2196F3),
                   onPressed: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => SignsNumericalExpressionsGame())

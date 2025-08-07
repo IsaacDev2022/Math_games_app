@@ -19,24 +19,27 @@ class ChooseGameScreen extends StatelessWidget {
           children: [
             ButtonCustom(
                 textButton: "Jogos de Operações",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => BasicOperationsScreen())
                   );
                 }
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
             ButtonCustom(
                 textButton: "Jogos de Frações",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => FractionsScreen())
                   );
                 }
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
             ButtonCustom(
                 textButton: "Jogos de Expressões Numéricas",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => NumericalExpressionsScreen())

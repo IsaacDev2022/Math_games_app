@@ -24,12 +24,23 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 100),
             ButtonCustom(
                 textButton: "Iniciar",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => ChooseGameScreen())
                   );
                 }
-            )
+            ),
+            SizedBox(height: 20),
+            ButtonCustom(
+                textButton: "Configurações",
+                color: Color(0xFF2196F3),
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ChooseGameScreen())
+                  );
+                }
+            ),
           ],
         )
       ),

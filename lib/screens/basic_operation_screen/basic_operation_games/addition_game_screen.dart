@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:math_games_app/controller/game_progress_controller.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
 
 class AdditionGameScreen extends StatefulWidget {
@@ -14,6 +15,8 @@ class AdditionGameScreen extends StatefulWidget {
 class _AdditionGameScreenState extends State<AdditionGameScreen> {
   final TextEditingController _addController = TextEditingController();
   String _result = "";
+
+  final gameProgressController = GameProgressController();
 
   var number1 = Random().nextInt(20);
   var number2 = Random().nextInt(20);
@@ -30,6 +33,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
       hits += 1;
       setState(() {
         _result = "CORRETO";
+        gameProgressController.additionPoints += 5;
       });
     } else {
       errors += 1;
@@ -66,6 +70,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
             SizedBox(height: 20),
             ButtonCustom(
                 textButton: "Verificar",
+                color: Color(0xFF2196F3),
                 onPressed: addNumbersGame
             ),
             SizedBox(height: 20),
@@ -82,6 +87,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                 children: [
                   ButtonCustom(
                       textButton: "Próximo",
+                      color: Color(0xFF2196F3),
                       onPressed: () {
                         setState(() {
                           _result = "";
@@ -130,6 +136,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                     SizedBox(height: 10,),
                     ButtonCustom(
                         textButton: "Jogar novamente",
+                        color: Color(0xFF2196F3),
                         onPressed: () {
                           setState(() {
                             _result = "";
@@ -143,6 +150,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                     SizedBox(height: 10,),
                     ButtonCustom(
                         textButton: "Voltar",
+                        color: Color(0xFF2196F3),
                         onPressed: () {
                           Navigator.pop(context);
                         }

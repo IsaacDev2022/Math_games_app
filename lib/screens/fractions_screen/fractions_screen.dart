@@ -27,6 +27,7 @@ class FractionsScreen extends StatelessWidget {
             SizedBox(height: 30),
             ButtonCustom(
                 textButton: "Adição",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => FractionAdditionGameScreen())
@@ -35,6 +36,7 @@ class FractionsScreen extends StatelessWidget {
             SizedBox(height: 30),
             ButtonCustom(
                 textButton: "Subtração",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => FractionSubtractionGameScreen())
@@ -43,6 +45,7 @@ class FractionsScreen extends StatelessWidget {
             SizedBox(height: 30),
             ButtonCustom(
                 textButton: "Multiplicação",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => FractionMultiplicationGameScreen())
@@ -51,6 +54,7 @@ class FractionsScreen extends StatelessWidget {
             SizedBox(height: 30),
             ButtonCustom(
                 textButton: "Divisão",
+                color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => FractionDivisionGameScreen())
