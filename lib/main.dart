@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:math_games_app/screens/choose_game_screen.dart';
 import 'package:math_games_app/screens/home_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'controller/game_progress_controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => GameProgressController(),
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {

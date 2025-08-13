@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../controller/game_progress_controller.dart';
 import '../../../widgets/button_custom.dart';
 
 class SubtractionGameScreen extends StatefulWidget {
@@ -27,10 +29,13 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
     final String subText = _subController.text;
     final int sub = int.tryParse(subText) ?? 0;
 
-    if (sub == subractNumbers(number1, number2)) {
+    final progress = Provider.of<GameProgressController>(context, listen: false);
+
+    if (sub == subtractNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
+        progress.addPoints(10);
       });
     } else {
       errors += 1;
@@ -40,19 +45,36 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
     }
   }
 
-  int subractNumbers(int num1, int num2) {
+  int subtractNumbers(int num1, int num2) {
     return num1 - num2;
   }
 
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<GameProgressController>(context);
+
     return Scaffold(
-        body: Container(
-          alignment: Alignment.center,
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 100),
+              Text(
+                "Pontuação Geral: ${progress.pointsCount}",
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              SizedBox(height: 30),
+              if (progress.pointsCount >= 150 && progress.pointsCount <= 160)
+                Text(
+                  "Parabéns, voce desbloqueou o jogo de Multiplicação!!",
+                  style: TextStyle(
+                      fontSize: 30
+                  ),
+                ),
+              SizedBox(height: 30),
               Text(
                 "${number1} - ${number2} = ?",
                 style: TextStyle(
@@ -73,7 +95,7 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
               SizedBox(height: 20),
               if (_result.isNotEmpty)
                 Text(
-                  "${number1} - ${number2} = ${subractNumbers(number1, number2)} => ${_result}",
+                  "${number1} - ${number2} = ${subtractNumbers(number1, number2)} => ${_result}",
                   style: TextStyle(
                       fontSize: 20
                   ),

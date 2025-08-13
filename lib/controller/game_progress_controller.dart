@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 
 class GameProgressController extends ChangeNotifier {
-  static final GameProgressController _instance = GameProgressController._internal();
+  int pointsCount = 500;
 
-  factory GameProgressController() => _instance;
+  void addPoints(int points) {
+    pointsCount += points;
+    notifyListeners();
+  }
 
-  GameProgressController._internal();
-
-  int additionPoints = 0;
-  int subtractionPoints = 0;
-
-  bool isAdditionSubtractUnlocked() => additionPoints >= 0;
-  bool isSubtractUnlocked() => subtractionPoints >= 0;
+  bool isAdditionUnlocked() => pointsCount >= 50;
+  bool isSubtractUnlocked() => pointsCount >= 100;
+  bool isMultiplicationUnlocked() => pointsCount >= 150;
+  bool isDivideUnlocked() => pointsCount >= 200;
+  bool isPotentiationUnlocked() => pointsCount >= 300;
+  bool isRootingUnlocked() => pointsCount >= 400;
 }

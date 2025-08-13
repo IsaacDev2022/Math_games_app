@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../controller/game_progress_controller.dart';
 import '../../../widgets/button_custom.dart';
 
 class PotentiationGameScreen extends StatefulWidget {
@@ -27,10 +29,13 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
     final String powText = _powController.text;
     final int pow = int.tryParse(powText) ?? 0;
 
+    final progress = Provider.of<GameProgressController>(context, listen: false);
+
     if (pow == potentiationNumbers(base, exponent)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
+        progress.addPoints(10);
       });
     } else {
       errors += 1;
@@ -47,6 +52,8 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<GameProgressController>(context);
+
     return Scaffold(
         body: Container(
           alignment: Alignment.center,
@@ -54,6 +61,22 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 100),
+              Text(
+                "Pontuação Geral: ${progress.pointsCount}",
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              SizedBox(height: 30),
+              if (progress.pointsCount >= 150 && progress.pointsCount <= 160)
+                Text(
+                  "Parabéns, voce desbloqueou o jogo de Radiciação!!",
+                  style: TextStyle(
+                      fontSize: 30
+                  ),
+                ),
+              SizedBox(height: 30),
               Text(
                 "${base} ^ ${exponent} = ?",
                 style: TextStyle(

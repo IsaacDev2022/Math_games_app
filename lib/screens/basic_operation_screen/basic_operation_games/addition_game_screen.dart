@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_games_app/controller/game_progress_controller.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
+import 'package:provider/provider.dart';
 
 class AdditionGameScreen extends StatefulWidget {
   const AdditionGameScreen({super.key});
@@ -16,8 +17,6 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
   final TextEditingController _addController = TextEditingController();
   String _result = "";
 
-  final gameProgressController = GameProgressController();
-
   var number1 = Random().nextInt(20);
   var number2 = Random().nextInt(20);
   var counter = 1;
@@ -26,6 +25,8 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
   var i = 0;
 
   void addNumbersGame() {
+    final progress = Provider.of<GameProgressController>(context, listen: false);
+
     final String somaText = _addController.text;
     final int add = int.tryParse(somaText) ?? 0;
 
@@ -33,7 +34,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
       hits += 1;
       setState(() {
         _result = "CORRETO";
-        gameProgressController.additionPoints += 5;
+        progress.addPoints(10);
       });
     } else {
       errors += 1;
@@ -49,13 +50,29 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<GameProgressController>(context);
+
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 100),
+            Text(
+              "Pontuação Geral: ${progress.pointsCount}",
+              style: TextStyle(
+                  fontSize: 30
+              ),
+            ),
+            SizedBox(height: 30),
+            if (progress.pointsCount >= 100 && progress.pointsCount <= 110)
+              Text(
+                "Parabéns, voce desbloqueou o jogo de Subtração!!",
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+            SizedBox(height: 30),
             Text(
               "${number1} + ${number2} = ?",
               style: TextStyle(

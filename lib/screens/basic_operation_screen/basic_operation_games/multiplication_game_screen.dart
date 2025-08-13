@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../controller/game_progress_controller.dart';
 import '../../../widgets/button_custom.dart';
 
 class MultiplicationGameScreen extends StatefulWidget {
@@ -27,10 +29,13 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
     final String multText = _multController.text;
     final int mult = int.tryParse(multText) ?? 0;
 
+    final progress = Provider.of<GameProgressController>(context, listen: false);
+
     if (mult == multiplyNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
+        progress.addPoints(10);
       });
     } else {
       errors += 1;
@@ -46,13 +51,30 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<GameProgressController>(context);
+
     return Scaffold(
-        body: Container(
-          alignment: Alignment.center,
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 100),
+              Text(
+                "Pontuação Geral: ${progress.pointsCount}",
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              SizedBox(height: 30),
+              if (progress.pointsCount >= 200 && progress.pointsCount <= 210)
+                Text(
+                  "Parabéns, voce desbloqueou o jogo de Divisão!!",
+                  style: TextStyle(
+                      fontSize: 30
+                  ),
+                ),
+              SizedBox(height: 30),
               Text(
                 "${number1} * ${number2} = ?",
                 style: TextStyle(
