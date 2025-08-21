@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:math_games_app/controller/game_progress_controller.dart';
 import 'package:provider/provider.dart';
 
-import '../../widgets/button_custom.dart';
+import '../../../widgets/button_custom.dart';
 import 'basic_operation_games/addition_game_screen.dart';
 import 'basic_operation_games/division_game_screen.dart';
 import 'basic_operation_games/multiplication_game_screen.dart';

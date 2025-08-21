@@ -4,18 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/game_progress_controller.dart';
-import '../../../widgets/button_custom.dart';
+import '../../../../controller/game_progress_controller.dart';
+import '../../../../widgets/button_custom.dart';
 
-class DivisionGameScreen extends StatefulWidget {
-  const DivisionGameScreen({super.key});
+class SubtractionGameScreen extends StatefulWidget {
+  const SubtractionGameScreen({super.key});
 
   @override
-  State<DivisionGameScreen> createState() => _DivisionGameScreenState();
+  State<SubtractionGameScreen> createState() => _SubtractionGameScreenState();
 }
 
-class _DivisionGameScreenState extends State<DivisionGameScreen> {
-  final TextEditingController _divController = TextEditingController();
+class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
+  final TextEditingController _subController = TextEditingController();
   String _result = "";
 
   var number1 = Random().nextInt(20);
@@ -25,13 +25,13 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
   var errors = 0;
   var i = 0;
 
-  void divisionNumbersGame() {
-    final String divText = _divController.text;
-    final int div = int.tryParse(divText) ?? 0;
+  void subtractionNumbersGame() {
+    final String subText = _subController.text;
+    final int sub = int.tryParse(subText) ?? 0;
 
     final progress = Provider.of<GameProgressController>(context, listen: false);
 
-    if (div == divideNumbers(number1, number2)) {
+    if (sub == subtractNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
@@ -45,8 +45,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
     }
   }
 
-  double divideNumbers(int num1, int num2) {
-    return num1 / num2;
+  int subtractNumbers(int num1, int num2) {
+    return num1 - num2;
   }
 
   @override
@@ -54,8 +54,7 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
     final progress = Provider.of<GameProgressController>(context);
 
     return Scaffold(
-        body: Container(
-          alignment: Alignment.center,
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,35 +67,35 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                 ),
               ),
               SizedBox(height: 30),
-              if (progress.pointsCount >= 300 && progress.pointsCount <= 310)
+              if (progress.pointsCount >= 150 && progress.pointsCount <= 160)
                 Text(
-                  "Parabéns, voce desbloqueou o jogo de Potenciação!!",
+                  "Parabéns, voce desbloqueou o jogo de Multiplicação!!",
                   style: TextStyle(
                       fontSize: 30
                   ),
                 ),
               SizedBox(height: 30),
               Text(
-                "${number1} / ${number2} = ?",
+                "${number1} - ${number2} = ?",
                 style: TextStyle(
                     fontSize: 20
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: _divController,
+                controller: _subController,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
                   color: Color(0xFF2196F3),
-                  onPressed: divisionNumbersGame
+                  onPressed: subtractionNumbersGame
               ),
               SizedBox(height: 20),
               if (_result.isNotEmpty)
                 Text(
-                  "${number1} / ${number2} = ${divideNumbers(number1, number2)} => ${_result}",
+                  "${number1} - ${number2} = ${subtractNumbers(number1, number2)} => ${_result}",
                   style: TextStyle(
                       fontSize: 20
                   ),
@@ -111,7 +110,7 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _divController.text = "";
+                            _subController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter += 1;
@@ -158,7 +157,7 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _divController.text = "";
+                            _subController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter = 1;
@@ -181,4 +180,6 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
     );
   }
 }
+
+
 

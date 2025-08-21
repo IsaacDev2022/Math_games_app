@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:math_games_app/screens/numerical_expressions_screen/numerical_expressions_game/normal_numerical_expressions_game.dart';
-import 'package:math_games_app/screens/numerical_expressions_screen/numerical_expressions_game/signs_numerical_expressions_game.dart';
 
-import '../../widgets/button_custom.dart';
+import '../../../widgets/button_custom.dart';
+import 'numerical_expressions_game/normal_numerical_expressions_game.dart';
+import 'numerical_expressions_game/signs_numerical_expressions_game.dart';
 
 class NumericalExpressionsScreen extends StatelessWidget {
   const NumericalExpressionsScreen({super.key});

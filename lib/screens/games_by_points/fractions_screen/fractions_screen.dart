@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:math_games_app/screens/fractions_screen/operations_fraction_games/fraction_addition_game_screen.dart';
-import 'package:math_games_app/screens/fractions_screen/operations_fraction_games/fraction_subtraction_game_screen.dart';
 
-import '../../widgets/button_custom.dart';
+import '../../../widgets/button_custom.dart';
+import 'operations_fraction_games/fraction_addition_game_screen.dart';
 import 'operations_fraction_games/fraction_division_game_screen.dart';
 import 'operations_fraction_games/fraction_multiplication_game_screen.dart';
+import 'operations_fraction_games/fraction_subtraction_game_screen.dart';
 
 class FractionsScreen extends StatelessWidget {
   const FractionsScreen({super.key});

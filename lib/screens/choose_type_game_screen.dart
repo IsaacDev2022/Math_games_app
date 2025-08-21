@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:math_games_app/screens/configuration_games_screen.dart';
 import 'package:math_games_app/screens/games_by_points/choose_game_points_screen.dart';
-import 'package:math_games_app/screens/choose_type_game_screen.dart';
-import 'package:math_games_app/widgets/button_custom.dart';
+import 'package:math_games_app/screens/games_by_timed/choose_game_timed_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+import '../widgets/button_custom.dart';
+
+class ChooseTypeGameScreen extends StatelessWidget {
+  const ChooseTypeGameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,34 +17,27 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              "Jogos de matemática",
-              style: TextStyle(
-                fontSize: 28
-              ),
-            ),
-            SizedBox(height: 100),
             ButtonCustom(
-                textButton: "Iniciar",
+                textButton: "Jogos por Pontos",
                 color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ChooseTypeGameScreen())
+                      MaterialPageRoute(builder: (context) => ChooseGamePointsScreen())
                   );
                 }
             ),
             SizedBox(height: 20),
             ButtonCustom(
-                textButton: "Configurações",
+                textButton: "Jogos por Tempo",
                 color: Color(0xFF2196F3),
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ConfigurationGamesScreen())
+                      MaterialPageRoute(builder: (context) => ChooseGameTimedScreen())
                   );
                 }
             ),
           ],
-        )
+        ),
       ),
     );
   }

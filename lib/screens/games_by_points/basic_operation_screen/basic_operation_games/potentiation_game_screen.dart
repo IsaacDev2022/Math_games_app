@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/game_progress_controller.dart';
-import '../../../widgets/button_custom.dart';
+import '../../../../controller/game_progress_controller.dart';
+import '../../../../widgets/button_custom.dart';
 
 class PotentiationGameScreen extends StatefulWidget {
   const PotentiationGameScreen({super.key});

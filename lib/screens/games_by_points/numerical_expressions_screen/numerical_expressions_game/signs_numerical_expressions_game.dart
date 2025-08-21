@@ -4,7 +4,7 @@ import 'package:expressions/expressions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/button_custom.dart';
+import '../../../../widgets/button_custom.dart';
 
 class SignsNumericalExpressionsGame extends StatefulWidget {
   const SignsNumericalExpressionsGame({super.key});

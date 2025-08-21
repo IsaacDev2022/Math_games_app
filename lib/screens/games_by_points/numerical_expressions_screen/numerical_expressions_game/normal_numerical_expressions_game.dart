@@ -1,40 +1,41 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:math_games_app/controller/game_progress_controller.dart';
-import 'package:math_games_app/widgets/button_custom.dart';
-import 'package:provider/provider.dart';
 
-class AdditionGameScreen extends StatefulWidget {
-  const AdditionGameScreen({super.key});
+import '../../../../widgets/button_custom.dart';
+
+class NormalNumericExpressionsGame extends StatefulWidget {
+  const NormalNumericExpressionsGame({super.key});
 
   @override
-  State<AdditionGameScreen> createState() => _AdditionGameScreenState();
+  State<NormalNumericExpressionsGame> createState() => _NormalNumericExpressionsGameState();
 }
 
-class _AdditionGameScreenState extends State<AdditionGameScreen> {
-  final TextEditingController _addController = TextEditingController();
+class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsGame> {
+  final TextEditingController _resultController = TextEditingController();
   String _result = "";
+  late String currentExpression;
 
-  var number1 = Random().nextInt(20);
-  var number2 = Random().nextInt(20);
   var counter = 1;
   var hits = 0;
   var errors = 0;
   var i = 0;
 
-  void addNumbersGame() {
-    final progress = Provider.of<GameProgressController>(context, listen: false);
+  @override
+  void initState() {
+    super.initState();
+    currentExpression = generateExpression();
+  }
 
-    final String somaText = _addController.text;
-    final int add = int.tryParse(somaText) ?? 0;
+  numericExpressionsGame() {
+    final String resultText = _resultController.text;
 
-    if (add == addNumbers(number1, number2)) {
+    if (resultText == evaluateExpression(currentExpression).toString()) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
-        progress.addPoints(10);
       });
     } else {
       errors += 1;
@@ -44,56 +45,78 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
     }
   }
 
-  int addNumbers(int num1, int num2) {
-    return num1 + num2;
+  String generateExpression() {
+    List<String> operators = ['+', '-', '*', '/'];
+    StringBuffer sb = StringBuffer();
+
+    sb.write(Random().nextInt(9) + 1);
+
+    for (int i = 0; i < 4; i++) {
+      String operator = operators[Random().nextInt(operators.length)];
+      int numero = (operator == '/') ? Random().nextInt(9) + 1 : Random().nextInt(10);
+      sb.write(' $operator $numero');
+    }
+
+    return sb.toString();
+  }
+
+  int evaluateExpression(String expression) {
+    List<String> tokens = expression.split(' ');
+    double result = double.parse(tokens[0]);
+
+    for (int i = 1; i < tokens.length; i += 2) {
+      String operator = tokens[i];
+      double number = double.parse(tokens[i + 1]);
+
+      switch (operator) {
+        case '+':
+          result += number;
+          break;
+        case '-':
+          result -= number;
+          break;
+        case '*':
+          result *= number;
+          break;
+        case '/':
+          result /= number;
+          break;
+      }
+    }
+
+    return result.round();
   }
 
   @override
   Widget build(BuildContext context) {
-    final progress = Provider.of<GameProgressController>(context);
-
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Container(
+        alignment: Alignment.center,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 100),
             Text(
-              "Pontuação Geral: ${progress.pointsCount}",
+              "$currentExpression = ?",
               style: TextStyle(
-                  fontSize: 30
-              ),
-            ),
-            SizedBox(height: 30),
-            if (progress.pointsCount >= 100 && progress.pointsCount <= 110)
-              Text(
-                "Parabéns, voce desbloqueou o jogo de Subtração!!",
-                style: TextStyle(
-                    fontSize: 30
-                ),
-              ),
-            SizedBox(height: 30),
-            Text(
-              "${number1} + ${number2} = ?",
-              style: TextStyle(
-                fontSize: 20
+                  fontSize: 20
               ),
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _addController,
+              controller: _resultController,
               keyboardType: TextInputType.number,
             ),
             SizedBox(height: 20),
             ButtonCustom(
                 textButton: "Verificar",
                 color: Color(0xFF2196F3),
-                onPressed: addNumbersGame
+                onPressed: numericExpressionsGame
             ),
             SizedBox(height: 20),
             if (_result.isNotEmpty)
               Text(
-                "${number1} + ${number2} = ${addNumbers(number1, number2)} => ${_result}",
+                "Resultado => $currentExpression = ${evaluateExpression(currentExpression)} \n${_result}",
                 style: TextStyle(
                     fontSize: 20
                 ),
@@ -108,9 +131,8 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                       onPressed: () {
                         setState(() {
                           _result = "";
-                          _addController.text = "";
-                          number1 = Random().nextInt(20);
-                          number2 = Random().nextInt(20);
+                          _resultController.text = "";
+                          currentExpression = generateExpression();
                           counter += 1;
                           FocusScope.of(context).unfocus();
                         });
@@ -157,9 +179,8 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _addController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            _resultController.text = "";
+                            currentExpression = generateExpression();
                             counter = 1;
                           });
                         }
@@ -181,3 +202,4 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
     );
   }
 }
+

@@ -4,19 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/game_progress_controller.dart';
-import '../../../widgets/button_custom.dart';
+import '../../../../controller/game_progress_controller.dart';
+import '../../../../widgets/button_custom.dart';
 
-class MultiplicationGameScreen extends StatefulWidget {
-  const MultiplicationGameScreen({super.key});
+
+class DivisionGameScreen extends StatefulWidget {
+  const DivisionGameScreen({super.key});
 
   @override
-  State<MultiplicationGameScreen> createState() => _MultiplicationGameScreenState();
+  State<DivisionGameScreen> createState() => _DivisionGameScreenState();
 }
 
-class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
-  final TextEditingController _multController = TextEditingController();
-  String _result= "";
+class _DivisionGameScreenState extends State<DivisionGameScreen> {
+  final TextEditingController _divController = TextEditingController();
+  String _result = "";
 
   var number1 = Random().nextInt(20);
   var number2 = Random().nextInt(20);
@@ -25,13 +26,13 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
   var errors = 0;
   var i = 0;
 
-  void multiplicationNumbersGame() {
-    final String multText = _multController.text;
-    final int mult = int.tryParse(multText) ?? 0;
+  void divisionNumbersGame() {
+    final String divText = _divController.text;
+    final int div = int.tryParse(divText) ?? 0;
 
     final progress = Provider.of<GameProgressController>(context, listen: false);
 
-    if (mult == multiplyNumbers(number1, number2)) {
+    if (div == divideNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
@@ -45,8 +46,8 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
     }
   }
 
-  int multiplyNumbers(int num1, int num2) {
-    return num1 * num2;
+  double divideNumbers(int num1, int num2) {
+    return num1 / num2;
   }
 
   @override
@@ -54,7 +55,8 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
     final progress = Provider.of<GameProgressController>(context);
 
     return Scaffold(
-        body: SingleChildScrollView(
+        body: Container(
+          alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,35 +69,35 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                 ),
               ),
               SizedBox(height: 30),
-              if (progress.pointsCount >= 200 && progress.pointsCount <= 210)
+              if (progress.pointsCount >= 300 && progress.pointsCount <= 310)
                 Text(
-                  "Parabéns, voce desbloqueou o jogo de Divisão!!",
+                  "Parabéns, voce desbloqueou o jogo de Potenciação!!",
                   style: TextStyle(
                       fontSize: 30
                   ),
                 ),
               SizedBox(height: 30),
               Text(
-                "${number1} * ${number2} = ?",
+                "${number1} / ${number2} = ?",
                 style: TextStyle(
                     fontSize: 20
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: _multController,
+                controller: _divController,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
                   color: Color(0xFF2196F3),
-                  onPressed: multiplicationNumbersGame
+                  onPressed: divisionNumbersGame
               ),
               SizedBox(height: 20),
               if (_result.isNotEmpty)
                 Text(
-                  "${number1} * ${number2} = ${multiplyNumbers(number1, number2)} => ${_result}",
+                  "${number1} / ${number2} = ${divideNumbers(number1, number2)} => ${_result}",
                   style: TextStyle(
                       fontSize: 20
                   ),
@@ -110,7 +112,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _multController.text = "";
+                            _divController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter += 1;
@@ -157,7 +159,7 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _multController.text = "";
+                            _divController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter = 1;

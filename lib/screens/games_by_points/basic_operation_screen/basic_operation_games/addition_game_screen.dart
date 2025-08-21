@@ -1,41 +1,50 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:math_games_app/controller/game_progress_controller.dart';
+import 'package:math_games_app/widgets/button_custom.dart';
+import 'package:provider/provider.dart';
 
-import '../../../widgets/button_custom.dart';
-
-class NormalNumericExpressionsGame extends StatefulWidget {
-  const NormalNumericExpressionsGame({super.key});
+class AdditionGameScreen extends StatefulWidget {
+  const AdditionGameScreen({super.key});
 
   @override
-  State<NormalNumericExpressionsGame> createState() => _NormalNumericExpressionsGameState();
+  State<AdditionGameScreen> createState() => _AdditionGameScreenState();
 }
 
-class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsGame> {
-  final TextEditingController _resultController = TextEditingController();
+class _AdditionGameScreenState extends State<AdditionGameScreen> {
+  final TextEditingController _addController = TextEditingController();
   String _result = "";
-  late String currentExpression;
 
+  var number1 = Random().nextInt(20);
+  var number2 = Random().nextInt(20);
   var counter = 1;
   var hits = 0;
   var errors = 0;
   var i = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    currentExpression = generateExpression();
+  int generateNumber(int points) {
+    if (points < 50) {
+      return Random().nextInt(20); // 0 a 19
+    } else if (points < 100) {
+      return Random().nextInt(100); // 0 a 99
+    } else {
+      return Random().nextInt(1000); // 0 a 999
+    }
   }
 
-  numericExpressionsGame() {
-    final String resultText = _resultController.text;
+  void addNumbersGame() {
+    final progress = Provider.of<GameProgressController>(context, listen: false);
 
-    if (resultText == evaluateExpression(currentExpression).toString()) {
+    final String somaText = _addController.text;
+    final int add = int.tryParse(somaText) ?? 0;
+
+    if (add == addNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
+        progress.addPoints(10);
       });
     } else {
       errors += 1;
@@ -45,78 +54,59 @@ class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsG
     }
   }
 
-  String generateExpression() {
-    List<String> operators = ['+', '-', '*', '/'];
-    StringBuffer sb = StringBuffer();
-
-    sb.write(Random().nextInt(9) + 1);
-
-    for (int i = 0; i < 4; i++) {
-      String operator = operators[Random().nextInt(operators.length)];
-      int numero = (operator == '/') ? Random().nextInt(9) + 1 : Random().nextInt(10);
-      sb.write(' $operator $numero');
-    }
-
-    return sb.toString();
-  }
-
-  int evaluateExpression(String expression) {
-    List<String> tokens = expression.split(' ');
-    double result = double.parse(tokens[0]);
-
-    for (int i = 1; i < tokens.length; i += 2) {
-      String operator = tokens[i];
-      double number = double.parse(tokens[i + 1]);
-
-      switch (operator) {
-        case '+':
-          result += number;
-          break;
-        case '-':
-          result -= number;
-          break;
-        case '*':
-          result *= number;
-          break;
-        case '/':
-          result /= number;
-          break;
-      }
-    }
-
-    return result.round();
+  int addNumbers(int num1, int num2) {
+    return num1 + num2;
   }
 
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<GameProgressController>(context);
+
     return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 100),
             Text(
-              "$currentExpression = ?",
+              "Pontuação Geral: ${progress.pointsCount}",
               style: TextStyle(
-                  fontSize: 20
+                  fontSize: 30
+              ),
+            ),
+            SizedBox(height: 30),
+            if (progress.pointsCount >= 100 && progress.pointsCount <= 110)
+              Text(
+                "Parabéns, voce desbloqueou o jogo de Subtração!!",
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+            SizedBox(height: 30),
+            Text(
+              "${number1} + ${number2} = ?",
+              style: TextStyle(
+                fontSize: 20
               ),
             ),
             SizedBox(height: 20),
             TextField(
-              controller: _resultController,
+              controller: _addController,
               keyboardType: TextInputType.number,
             ),
             SizedBox(height: 20),
             ButtonCustom(
                 textButton: "Verificar",
                 color: Color(0xFF2196F3),
-                onPressed: numericExpressionsGame
+                onPressed: () {
+                  addNumbersGame();
+                  FocusScope.of(context).unfocus();
+                },
             ),
             SizedBox(height: 20),
             if (_result.isNotEmpty)
               Text(
-                "Resultado => $currentExpression = ${evaluateExpression(currentExpression)} \n${_result}",
+                "${number1} + ${number2} = ${addNumbers(number1, number2)} => ${_result}",
                 style: TextStyle(
                     fontSize: 20
                 ),
@@ -131,8 +121,9 @@ class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsG
                       onPressed: () {
                         setState(() {
                           _result = "";
-                          _resultController.text = "";
-                          currentExpression = generateExpression();
+                          _addController.text = "";
+                          number1 = generateNumber(progress.pointsCount);
+                          number2 = generateNumber(progress.pointsCount);
                           counter += 1;
                           FocusScope.of(context).unfocus();
                         });
@@ -179,8 +170,9 @@ class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsG
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _resultController.text = "";
-                            currentExpression = generateExpression();
+                            _addController.text = "";
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter = 1;
                           });
                         }
@@ -202,4 +194,3 @@ class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsG
     );
   }
 }
-

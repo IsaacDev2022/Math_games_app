@@ -4,19 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/game_progress_controller.dart';
-import '../../../widgets/button_custom.dart';
+import '../../../../controller/game_progress_controller.dart';
+import '../../../../widgets/button_custom.dart';
 
-class SubtractionGameScreen extends StatefulWidget {
-  const SubtractionGameScreen({super.key});
+class MultiplicationGameScreen extends StatefulWidget {
+  const MultiplicationGameScreen({super.key});
 
   @override
-  State<SubtractionGameScreen> createState() => _SubtractionGameScreenState();
+  State<MultiplicationGameScreen> createState() => _MultiplicationGameScreenState();
 }
 
-class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
-  final TextEditingController _subController = TextEditingController();
-  String _result = "";
+class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
+  final TextEditingController _multController = TextEditingController();
+  String _result= "";
 
   var number1 = Random().nextInt(20);
   var number2 = Random().nextInt(20);
@@ -25,13 +25,13 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
   var errors = 0;
   var i = 0;
 
-  void subtractionNumbersGame() {
-    final String subText = _subController.text;
-    final int sub = int.tryParse(subText) ?? 0;
+  void multiplicationNumbersGame() {
+    final String multText = _multController.text;
+    final int mult = int.tryParse(multText) ?? 0;
 
     final progress = Provider.of<GameProgressController>(context, listen: false);
 
-    if (sub == subtractNumbers(number1, number2)) {
+    if (mult == multiplyNumbers(number1, number2)) {
       hits += 1;
       setState(() {
         _result = "CORRETO";
@@ -45,8 +45,8 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
     }
   }
 
-  int subtractNumbers(int num1, int num2) {
-    return num1 - num2;
+  int multiplyNumbers(int num1, int num2) {
+    return num1 * num2;
   }
 
   @override
@@ -67,35 +67,35 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                 ),
               ),
               SizedBox(height: 30),
-              if (progress.pointsCount >= 150 && progress.pointsCount <= 160)
+              if (progress.pointsCount >= 200 && progress.pointsCount <= 210)
                 Text(
-                  "Parabéns, voce desbloqueou o jogo de Multiplicação!!",
+                  "Parabéns, voce desbloqueou o jogo de Divisão!!",
                   style: TextStyle(
                       fontSize: 30
                   ),
                 ),
               SizedBox(height: 30),
               Text(
-                "${number1} - ${number2} = ?",
+                "${number1} * ${number2} = ?",
                 style: TextStyle(
                     fontSize: 20
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: _subController,
+                controller: _multController,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 20),
               ButtonCustom(
                   textButton: "Verificar",
                   color: Color(0xFF2196F3),
-                  onPressed: subtractionNumbersGame
+                  onPressed: multiplicationNumbersGame
               ),
               SizedBox(height: 20),
               if (_result.isNotEmpty)
                 Text(
-                  "${number1} - ${number2} = ${subtractNumbers(number1, number2)} => ${_result}",
+                  "${number1} * ${number2} = ${multiplyNumbers(number1, number2)} => ${_result}",
                   style: TextStyle(
                       fontSize: 20
                   ),
@@ -110,7 +110,7 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _subController.text = "";
+                            _multController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter += 1;
@@ -157,7 +157,7 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                         onPressed: () {
                           setState(() {
                             _result = "";
-                            _subController.text = "";
+                            _multController.text = "";
                             number1 = Random().nextInt(20);
                             number2 = Random().nextInt(20);
                             counter = 1;
@@ -180,6 +180,4 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
     );
   }
 }
-
-
 

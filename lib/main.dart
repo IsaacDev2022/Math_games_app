@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:math_games_app/screens/choose_game_screen.dart';
+import 'package:math_games_app/screens/games_by_points/choose_game_points_screen.dart';
+import 'package:math_games_app/screens/games_by_timed/choose_game_timed_screen.dart';
 import 'package:math_games_app/screens/home_screen.dart';
+import 'package:math_games_app/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/game_progress_controller.dart';
@@ -26,12 +28,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: "/home",
+      initialRoute: "/splashScreen",
       routes: {
         '/home': (context) => HomeScreen(),
-        '/choose_game_screen': (context) => ChooseGameScreen()
+        '/splashScreen': (context) => SplashScreen(),
+        '/choose_game_points_screen': (context) => ChooseGamePointsScreen(),
+        '/choose_game_timed_screen': (context) => ChooseGameTimedScreen()
       },
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

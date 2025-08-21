@@ -3,16 +3,18 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/button_custom.dart';
+import '../../../../widgets/button_custom.dart';
 
-class FractionMultiplicationGameScreen extends StatefulWidget {
-  const FractionMultiplicationGameScreen({super.key});
+class FractionDivisionGameScreen extends StatefulWidget {
+  const FractionDivisionGameScreen({super.key});
+
 
   @override
-  State<FractionMultiplicationGameScreen> createState() => _FractionMultiplicationGameState();
+  State<FractionDivisionGameScreen> createState() => _FractionDivisionGameState();
+
 }
 
-class _FractionMultiplicationGameState extends State<FractionMultiplicationGameScreen> {
+class _FractionDivisionGameState extends State<FractionDivisionGameScreen> {
   final TextEditingController _numeradorController = TextEditingController();
   final TextEditingController _denominadorController = TextEditingController();
   String _result = "";
@@ -37,8 +39,8 @@ class _FractionMultiplicationGameState extends State<FractionMultiplicationGameS
     final int denominador = int.tryParse(denominadorText) ?? 0;
 
     if (
-    numerador == multiplyFractionsNumerator(numerador1, numerador2) &&
-    denominador == multiplyFractionsDenominator(denominador1, denominador2)
+    numerador == divideFractionsNumerator(numerador1, denominador2) &&
+    denominador == divideFractionsDenominator(numerador2, denominador1)
     ) {
       hits += 1;
       setState(() {
@@ -52,18 +54,18 @@ class _FractionMultiplicationGameState extends State<FractionMultiplicationGameS
     }
   }
 
-  multiplyFractionsNumerator(
+  divideFractionsNumerator(
       int numerador1,
-      int numerador2,
-      ) {
-    return numerador1 * numerador2;
-  }
-
-  multiplyFractionsDenominator(
-      int denominador1,
       int denominador2,
       ) {
-    return denominador1 * denominador2;
+    return numerador1 * denominador2;
+  }
+
+  divideFractionsDenominator(
+      int numerador2,
+      int denominador1,
+      ) {
+    return numerador2 * denominador1;
   }
 
   @override
@@ -83,7 +85,7 @@ class _FractionMultiplicationGameState extends State<FractionMultiplicationGameS
             ),
             SizedBox(height: 20),
             Text(
-              "X",
+              "/",
               style: TextStyle(
                   fontSize: 20
               ),
@@ -114,11 +116,11 @@ class _FractionMultiplicationGameState extends State<FractionMultiplicationGameS
             SizedBox(height: 20),
             if (_result.isNotEmpty)
               Text(
-                "${numerador1} / ${denominador1} X ${numerador2} / ${denominador2} = " +
-                "${multiplyFractionsNumerator(numerador1, numerador2)} / " +
-                "${multiplyFractionsDenominator(denominador1, denominador2)} => " +
-                "${_result}",
-                  style: TextStyle(
+                "${numerador1} / ${denominador1} -/- ${numerador2} / ${denominador2} = " +
+                    "${divideFractionsNumerator(numerador1, denominador2)} / " +
+                    "${divideFractionsDenominator(numerador2, denominador1)} => " +
+                    "${_result}",
+                style: TextStyle(
                     fontSize: 20
                 ),
               ),
