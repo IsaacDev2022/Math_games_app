@@ -25,6 +25,16 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
   var errors = 0;
   var i = 0;
 
+  int generateNumber(int points) {
+    if (points < 50) {
+      return Random().nextInt(20); // 0 a 19
+    } else if (points < 100) {
+      return Random().nextInt(100); // 0 a 99
+    } else {
+      return Random().nextInt(1000); // 0 a 999
+    }
+  }
+
   void potentiationNumbersGame() {
     final String powText = _powController.text;
     final int pow = int.tryParse(powText) ?? 0;
@@ -113,8 +123,8 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
                           setState(() {
                             _result = "";
                             _powController.text = "";
-                            base = Random().nextInt(20);
-                            exponent = Random().nextInt(10);
+                            base = generateNumber(progress.pointsCount);
+                            exponent = generateNumber(progress.pointsCount);
                             counter += 1;
                             FocusScope.of(context).unfocus();
                           });
@@ -162,8 +172,8 @@ class _PotentiationGameScreenState extends State<PotentiationGameScreen> {
                             setState(() {
                               _result = "";
                               _powController.text = "";
-                              base = Random().nextInt(20);
-                              exponent = Random().nextInt(10);
+                              base = generateNumber(progress.pointsCount);
+                              exponent = generateNumber(progress.pointsCount);
                               counter = 1;
                             });
                           }

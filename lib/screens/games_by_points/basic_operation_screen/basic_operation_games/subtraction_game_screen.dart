@@ -25,6 +25,16 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
   var errors = 0;
   var i = 0;
 
+  int generateNumber(int points) {
+    if (points < 50) {
+      return Random().nextInt(20); // 0 a 19
+    } else if (points < 100) {
+      return Random().nextInt(100); // 0 a 99
+    } else {
+      return Random().nextInt(1000); // 0 a 999
+    }
+  }
+
   void subtractionNumbersGame() {
     final String subText = _subController.text;
     final int sub = int.tryParse(subText) ?? 0;
@@ -111,8 +121,8 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                           setState(() {
                             _result = "";
                             _subController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter += 1;
                             FocusScope.of(context).unfocus();
                           });
@@ -158,8 +168,8 @@ class _SubtractionGameScreenState extends State<SubtractionGameScreen> {
                           setState(() {
                             _result = "";
                             _subController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter = 1;
                           });
                         }

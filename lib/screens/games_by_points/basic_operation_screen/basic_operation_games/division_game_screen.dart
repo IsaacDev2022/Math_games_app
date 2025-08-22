@@ -26,6 +26,16 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
   var errors = 0;
   var i = 0;
 
+  int generateNumber(int points) {
+    if (points < 50) {
+      return Random().nextInt(20); // 0 a 19
+    } else if (points < 100) {
+      return Random().nextInt(100); // 0 a 99
+    } else {
+      return Random().nextInt(1000); // 0 a 999
+    }
+  }
+
   void divisionNumbersGame() {
     final String divText = _divController.text;
     final int div = int.tryParse(divText) ?? 0;
@@ -113,8 +123,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                           setState(() {
                             _result = "";
                             _divController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter += 1;
                             FocusScope.of(context).unfocus();
                           });
@@ -160,8 +170,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                           setState(() {
                             _result = "";
                             _divController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter = 1;
                           });
                         }

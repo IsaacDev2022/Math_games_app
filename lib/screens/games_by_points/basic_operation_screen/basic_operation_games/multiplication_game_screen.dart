@@ -25,6 +25,16 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
   var errors = 0;
   var i = 0;
 
+  int generateNumber(int points) {
+    if (points < 50) {
+      return Random().nextInt(20); // 0 a 19
+    } else if (points < 100) {
+      return Random().nextInt(100); // 0 a 99
+    } else {
+      return Random().nextInt(1000); // 0 a 999
+    }
+  }
+
   void multiplicationNumbersGame() {
     final String multText = _multController.text;
     final int mult = int.tryParse(multText) ?? 0;
@@ -111,8 +121,8 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                           setState(() {
                             _result = "";
                             _multController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter += 1;
                             FocusScope.of(context).unfocus();
                           });
@@ -158,8 +168,8 @@ class _MultiplicationGameScreenState extends State<MultiplicationGameScreen> {
                           setState(() {
                             _result = "";
                             _multController.text = "";
-                            number1 = Random().nextInt(20);
-                            number2 = Random().nextInt(20);
+                            number1 = generateNumber(progress.pointsCount);
+                            number2 = generateNumber(progress.pointsCount);
                             counter = 1;
                           });
                         }

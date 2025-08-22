@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../controller/game_progress_controller.dart';
 import '../../../../widgets/button_custom.dart';
 
 class RootingGameScreen extends StatefulWidget {
@@ -21,6 +23,16 @@ class _RootingGameScreenState extends State<RootingGameScreen> {
   var hits = 0;
   var errors = 0;
   var i = 0;
+
+  int generateNumber(int points) {
+    if (points < 50) {
+      return Random().nextInt(20); // 0 a 19
+    } else if (points < 100) {
+      return Random().nextInt(100); // 0 a 99
+    } else {
+      return Random().nextInt(1000); // 0 a 999
+    }
+  }
 
   void rootingNumbersGame() {
     final String rootText = _rootingController.text;
@@ -46,6 +58,8 @@ class _RootingGameScreenState extends State<RootingGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<GameProgressController>(context);
+
     return Scaffold(
         body: Container(
           alignment: Alignment.center,
@@ -89,7 +103,7 @@ class _RootingGameScreenState extends State<RootingGameScreen> {
                           setState(() {
                             _result = "";
                             _rootingController.text = "";
-                            number = Random().nextInt(20);
+                            number = generateNumber(progress.pointsCount);
                             counter += 1;
                             FocusScope.of(context).unfocus();
                           });
@@ -137,7 +151,7 @@ class _RootingGameScreenState extends State<RootingGameScreen> {
                             setState(() {
                               _result = "";
                               _rootingController.text = "";
-                              number = Random().nextInt(20);
+                              number = generateNumber(progress.pointsCount);
                               counter = 1;
                             });
                           }
