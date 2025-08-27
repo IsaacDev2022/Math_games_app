@@ -53,7 +53,7 @@ class _DivisionTimedGameScreenState extends State<DivisionTimedGameScreen> {
   void _endGame() {
     _timer.cancel();
     setState(() {
-      _result = "⏰ Tempo Esgotado!";
+      _result = "Tempo Esgotado!";
     });
   }
 
@@ -80,14 +80,14 @@ class _DivisionTimedGameScreenState extends State<DivisionTimedGameScreen> {
     if (add == divNumbers(number1, number2)) {
       hits += 1;
       setState(() {
-        _result = "CORRETO ✅";
+        _result = "CORRETO";
         progress.addPoints(10);
         _timeLeft += 10; // bônus de tempo
       });
     } else {
       errors += 1;
       setState(() {
-        _result = "ERRADO ❌";
+        _result = "ERRADO";
       });
     }
 
@@ -122,7 +122,7 @@ class _DivisionTimedGameScreenState extends State<DivisionTimedGameScreen> {
               ),
               SizedBox(height: 20),
               Text(
-                "⏳ Tempo: $_timeLeft s",
+                "Tempo: $_timeLeft s",
                 style: TextStyle(fontSize: 26, color: Colors.red),
               ),
               SizedBox(height: 40),
@@ -157,7 +157,7 @@ class _DivisionTimedGameScreenState extends State<DivisionTimedGameScreen> {
                       style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
-                    Text("✅ Acertos: $hits   ❌ Erros: $errors",
+                    Text("Acertos: $hits   Erros: $errors",
                         style: TextStyle(fontSize: 20)),
                     SizedBox(height: 20),
                     ElevatedButton(

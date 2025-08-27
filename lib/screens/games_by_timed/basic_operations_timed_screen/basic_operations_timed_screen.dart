@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_games_app/controller/game_progress_controller.dart';
 import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_games/addition_timed_game_screen.dart';
+import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_games/division_timed_game_screen.dart';
+import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_games/multiplication_timed_game_screen.dart';
+import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_games/potentiation_timed_game_screen.dart';
+import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_games/rooting_timed_game_screen.dart';
+import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_games/subtraction_timed_game_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../widgets/button_custom.dart';
@@ -33,6 +38,45 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                             builder: (context) => AdditionTimedGameScreen()));
                       }),
                   SizedBox(height: 30),
+                  ButtonCustom(
+                      textButton: "Subtração",
+                      color: Color(0xFF2196F3),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SubtractionTimedGameScreen()));
+                      }),
+                  SizedBox(height: 30),
+                  ButtonCustom(
+                      textButton: "Multiplicação",
+                      color: Color(0xFF2196F3),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MultiplicationTimedGameScreen()));
+                      }),
+                  SizedBox(height: 30),
+                  ButtonCustom(
+                      textButton: "Divisão",
+                      color: Color(0xFF2196F3),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => DivisionTimedGameScreen()));
+                      }),
+                  SizedBox(height: 30),
+                  ButtonCustom(
+                      textButton: "Potenciação",
+                      color: Color(0xFF2196F3),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PotentiationTimedGameScreen()));
+                      }),
+                  SizedBox(height: 30),
+                  ButtonCustom(
+                      textButton: "Radiciação",
+                      color: Color(0xFF2196F3),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => RootingTimedGameScreen()));
+                      }),
                 ],
               ),
             );
