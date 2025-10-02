@@ -31,7 +31,7 @@ class BasicOperationsScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   ButtonCustom(
                       textButton: "Adição",
-                      color: Color(0xFF2196F3),
+                      color: Color(0xFFFF9940),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => AdditionGameScreen()));
@@ -39,7 +39,7 @@ class BasicOperationsScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   ButtonCustom(
                       textButton: "Subtração",
-                      color: progress.isSubtractUnlocked() ? Color(0xFF2196F3) : Color(0xFFBDBDBD),
+                      color: progress.isSubtractUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
                       onPressed: () {
                         if (progress.isSubtractUnlocked()) {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -51,7 +51,8 @@ class BasicOperationsScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   ButtonCustom(
                       textButton: "Multiplicação",
-                      color: progress.isMultiplicationUnlocked() ? Color(0xFF2196F3) : Color(0xFFBDBDBD),
+                      color: progress.isMultiplicationUnlocked() ? Color(
+                          0xFFFF9029) : Color(0xFFBDBDBD),
                       onPressed: () {
                         if (progress.isMultiplicationUnlocked()) {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -62,7 +63,7 @@ class BasicOperationsScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   ButtonCustom(
                       textButton: "Divisão",
-                      color: progress.isDivideUnlocked() ? Color(0xFF2196F3) : Color(0xFFBDBDBD),
+                      color: progress.isDivideUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
                       onPressed: () {
                         if (progress.isDivideUnlocked()) {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -73,7 +74,8 @@ class BasicOperationsScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   ButtonCustom(
                       textButton: "Potenciação",
-                      color: progress.isPotentiationUnlocked() ? Color(0xFF2196F3) : Color(0xFFBDBDBD),
+                      color: progress.isPotentiationUnlocked() ? Color(
+                          0xFFECA552) : Color(0xFFBDBDBD),
                       onPressed: () {
                         if (progress.isSubtractUnlocked()) {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -84,7 +86,7 @@ class BasicOperationsScreen extends StatelessWidget {
                   SizedBox(height: 30),
                   ButtonCustom(
                       textButton: "Radiciação",
-                      color: progress.isRootingUnlocked() ? Color(0xFF2196F3) : Color(0xFFBDBDBD),
+                      color: progress.isRootingUnlocked() ? Color(0xFFFF9029) : Color(0xFFBDBDBD),
                       onPressed: () {
                         if (progress.isRootingUnlocked()) {
                           Navigator.of(context).push(MaterialPageRoute(

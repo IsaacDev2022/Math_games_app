@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:math_games_app/screens/configuration_games_screen.dart';
-import 'package:math_games_app/screens/games_by_points/choose_game_points_screen.dart';
 import 'package:math_games_app/screens/choose_type_game_screen.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
+import 'package:math_games_app/widgets/custom_drawer.dart';
+
+import '../widgets/custom_appbar.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,22 +13,35 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(),
+      drawer: CustomDrawer(),
       body: Container(
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image.asset("assets/images/MathGamesOrangeLogo.png"),
+            SizedBox(height: 20),
             Text(
-              "Jogos de matemática",
+              "Bem Vindo ao",
               style: TextStyle(
-                fontSize: 28
+                fontSize: 26,
+                color: Color(0xFFFF9940)
+              ),
+            ),
+            Text(
+              "Math Games",
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFFF9940)
               ),
             ),
             SizedBox(height: 100),
             ButtonCustom(
                 textButton: "Iniciar",
-                color: Color(0xFF2196F3),
+                color: Color(0xFFFF9940),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => ChooseTypeGameScreen())
@@ -34,15 +49,6 @@ class HomeScreen extends StatelessWidget {
                 }
             ),
             SizedBox(height: 20),
-            ButtonCustom(
-                textButton: "Configurações",
-                color: Color(0xFF2196F3),
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ConfigurationGamesScreen())
-                  );
-                }
-            ),
           ],
         )
       ),
