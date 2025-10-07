@@ -24,6 +24,8 @@ class NumericalExpressionsTimedScreen extends StatelessWidget {
               ),
               SizedBox(height: 30),
               ButtonCustom(
+                  heightButton: 60,
+                  widthButton: 180,
                   textButton: "Expressões Numéricas Normais",
                   color: Color(0xFF2196F3),
                   onPressed: () {
@@ -33,6 +35,8 @@ class NumericalExpressionsTimedScreen extends StatelessWidget {
                   }),
               SizedBox(height: 30),
               ButtonCustom(
+                  heightButton: 60,
+                  widthButton: 180,
                   textButton: "Exepressões Numéricas Com Símbolos",
                   color: Color(0xFF2196F3),
                   onPressed: () {

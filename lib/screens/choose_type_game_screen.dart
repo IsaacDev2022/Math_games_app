@@ -22,6 +22,8 @@ class ChooseTypeGameScreen extends StatelessWidget {
             Image.asset("assets/images/MathGamesOrangeLogo.png"),
             SizedBox(height: 100),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 200,
                 textButton: "Jogos por Pontos",
                 color: Color(0xFFFF9940),
                 onPressed: () {
@@ -32,6 +34,8 @@ class ChooseTypeGameScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 200,
                 textButton: "Jogos por Tempo",
                 color: Color(0xFFFF9940),
                 onPressed: () {

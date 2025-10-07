@@ -29,6 +29,8 @@ class ChooseGamePointsScreen extends StatelessWidget {
             ),
             SizedBox(height: 100),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 240,
                 textButton: "Operações Básicas",
                 color: Color(0xFFFF9940),
                 onPressed: () {
@@ -39,6 +41,8 @@ class ChooseGamePointsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 240,
                 textButton: "Frações",
                 color: Color(0xFFFF9940),
                 onPressed: () {
@@ -49,6 +53,8 @@ class ChooseGamePointsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 240,
                 textButton: "Expressões Numéricas",
                 color: Color(0xFFFF9940),
                 onPressed: () {

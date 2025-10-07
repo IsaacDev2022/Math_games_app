@@ -100,6 +100,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
               ),
               SizedBox(height: 20),
               ButtonCustom(
+                  heightButton: 60,
+                  widthButton: 180,
                   textButton: "Verificar",
                   color: Color(0xFF2196F3),
                   onPressed: divisionNumbersGame
@@ -117,6 +119,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                 Column(
                   children: [
                     ButtonCustom(
+                        heightButton: 60,
+                        widthButton: 180,
                         textButton: "Próximo",
                         color: Color(0xFF2196F3),
                         onPressed: () {
@@ -164,6 +168,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                     ),
                     SizedBox(height: 10,),
                     ButtonCustom(
+                        heightButton: 60,
+                        widthButton: 180,
                         textButton: "Jogar novamente",
                         color: Color(0xFF2196F3),
                         onPressed: () {
@@ -178,6 +184,8 @@ class _DivisionGameScreenState extends State<DivisionGameScreen> {
                     ),
                     SizedBox(height: 10,),
                     ButtonCustom(
+                        heightButton: 60,
+                        widthButton: 180,
                         textButton: "Voltar",
                         color: Color(0xFF2196F3),
                         onPressed: () {

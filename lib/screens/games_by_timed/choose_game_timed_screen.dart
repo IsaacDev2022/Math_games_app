@@ -19,6 +19,8 @@ class ChooseGameTimedScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 180,
                 textButton: "Jogos de Operações",
                 color: Color(0xFF2196F3),
                 onPressed: () {
@@ -29,6 +31,8 @@ class ChooseGameTimedScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 180,
                 textButton: "Jogos de Frações",
                 color: Color(0xFF2196F3),
                 onPressed: () {
@@ -39,6 +43,8 @@ class ChooseGameTimedScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 180,
                 textButton: "Jogos de Expressões Numéricas",
                 color: Color(0xFF2196F3),
                 onPressed: () {

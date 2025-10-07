@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,12 +7,16 @@ class ButtonCustom extends StatefulWidget {
   final String textButton;
   final VoidCallback onPressed;
   final Color color;
+  final double heightButton;
+  final double widthButton;
 
   const ButtonCustom({
     required this.textButton,
     required this.onPressed,
     required this.color,
-    Key? key
+    required this.heightButton,
+    required this.widthButton,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -19,12 +25,11 @@ class ButtonCustom extends StatefulWidget {
 
 class _ButtonCustomState extends State<ButtonCustom> {
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: 280,
+      height: widget.heightButton,
+      width: widget.widthButton,
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ButtonStyle(
@@ -46,7 +51,7 @@ class _ButtonCustomState extends State<ButtonCustom> {
           widget.textButton,
           style: TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold
           ),
         ),

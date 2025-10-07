@@ -185,6 +185,8 @@ class _FractionMultiplicationGameState extends State<FractionMultiplicationGameS
             ),
             SizedBox(height: 20),
             ButtonCustom(
+                heightButton: 60,
+                widthButton: 180,
                 textButton: "Verificar",
                 color: Color(0xFF2196F3),
                 onPressed: multiplyFractionsGame
@@ -205,6 +207,8 @@ class _FractionMultiplicationGameState extends State<FractionMultiplicationGameS
               Column(
                 children: [
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Próximo",
                       color: Color(0xFF2196F3),
                       onPressed: () {

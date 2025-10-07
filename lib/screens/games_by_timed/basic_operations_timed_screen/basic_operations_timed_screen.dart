@@ -31,6 +31,8 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30),
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Adição",
                       color: Color(0xFF2196F3),
                       onPressed: () {
@@ -39,6 +41,8 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       }),
                   SizedBox(height: 30),
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Subtração",
                       color: Color(0xFF2196F3),
                       onPressed: () {
@@ -47,6 +51,8 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       }),
                   SizedBox(height: 30),
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Multiplicação",
                       color: Color(0xFF2196F3),
                       onPressed: () {
@@ -55,6 +61,8 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       }),
                   SizedBox(height: 30),
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Divisão",
                       color: Color(0xFF2196F3),
                       onPressed: () {
@@ -63,6 +71,8 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       }),
                   SizedBox(height: 30),
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Potenciação",
                       color: Color(0xFF2196F3),
                       onPressed: () {
@@ -71,6 +81,8 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       }),
                   SizedBox(height: 30),
                   ButtonCustom(
+                      heightButton: 60,
+                      widthButton: 180,
                       textButton: "Radiciação",
                       color: Color(0xFF2196F3),
                       onPressed: () {
