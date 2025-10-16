@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_games_app/screens/choose_type_game_screen.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
-import 'package:math_games_app/widgets/card_game_choice_custom.dart';
 import 'package:math_games_app/widgets/custom_drawer.dart';
 
 import '../widgets/custom_appbar.dart';
