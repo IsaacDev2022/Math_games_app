@@ -246,7 +246,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                         alignment: Alignment.center,
                         children: [
                           SizedBox(
-                            width: 90, // ← tamanho total do círculo
+                            width: 90,
                             height: 90,
                             child: CircularProgressIndicator(
                               value: counterProgress,
@@ -256,7 +256,7 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                             ),
                           ),
                           Container(
-                            width: 65, // ← tamanho do círculo interno (onde fica o número)
+                            width: 65,
                             height: 65,
                             decoration: const BoxDecoration(
                               color: Colors.white,

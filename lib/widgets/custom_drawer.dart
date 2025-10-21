@@ -129,11 +129,11 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Divider(
-                  color: Colors.grey, // Cor da linha
-                  height: 20, // Altura do espaço acima e abaixo da linha
-                  thickness: 1, // Espessura da linha
-                  indent: 10, // Recuo do início da linha
-                  endIndent: 10, // Recuo do fim da linha
+                  color: Colors.grey,
+                  height: 20,
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
                 ),
                 SizedBox(height: 20),
                 ListTile(

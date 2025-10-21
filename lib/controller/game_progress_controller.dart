@@ -19,4 +19,8 @@ class GameProgressController extends ChangeNotifier {
   bool isDivideUnlocked() => pointsCount >= 200;
   bool isPotentiationUnlocked() => pointsCount >= 300;
   bool isRootingUnlocked() => pointsCount >= 400;
+  bool isAdditionFractionUnlocked() => pointsCount >= 0;
+  bool isSubtractFractionUnlocked() => pointsCount >= 600;
+  bool isMultiplicationFractionUnlocked() => pointsCount >= 800;
+  bool isDivideFractionUnlocked() => pointsCount >= 1000;
 }
