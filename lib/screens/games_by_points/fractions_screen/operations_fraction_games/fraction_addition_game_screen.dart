@@ -66,15 +66,15 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
 
     for (int i = 0; i <= 50; i++) {
       if (num1 % np[v] == 0 && num2 % np[v] == 0) {
-        result1 = (num1 / np[v]) as int;
-        result2 = (num2 / np[v]) as int;
+        result1 = (num1 ~/ np[v]) as int;
+        result2 = (num2 ~/ np[v]) as int;
         num1 = result1;
         num2 = result2;
       } else if (num1 % np[v] == 0 && num2 % np[v] != 0) {
-        result1 = (num1 / np[v]) as int;
+        result1 = (num1 ~/ np[v]) as int;
         num1 = result1;
       } else if (num1 % np[v] != 0 && num2 % np[v] == 0) {
-        result2 = (num2 / np[v]) as int;
+        result2 = (num2 ~/ np[v]) as int;
         num2 = result2;
       } else if (num1 % np[v] != 0 && num2 % np[v] != 0) {
         v++;
@@ -99,7 +99,7 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
       resultado1 = numerador1 + numerador2;
     } else {
       var mmc = calculateMmc(denominador1, denominador2);
-      resultado1 = ((mmc / denominador1) * numerador1) + ((mmc / denominador2) * numerador2);
+      resultado1 = ((mmc ~/ denominador1) * numerador1) + ((mmc ~/ denominador2) * numerador2);
     }
 
     return resultado1;
@@ -141,139 +141,141 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
                         children: [
                           SizedBox(height: 20),
                           if (counter < 10) ...[
-                            SizedBox(height: 30),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                      "${numerador1}",
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    Container(
-                                      width: 40,
-                                      height: 4,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      "${denominador1}",
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 30),
-                                Text(
-                                  "+",
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(width: 30),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "${numerador2}",
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    Container(
-                                      width: 40,
-                                      height: 4,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      "${denominador2}",
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 20),
-                                Text(
-                                  "=",
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(width: 20),
-                                Text(
-                                  "?",
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                              child: Column(
+                            if (_result == "") ...[
+                              SizedBox(height: 30),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextField(
-                                    controller: _numeradorController,
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(color: Color(0xFFECA552)),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        "${numerador1}",
+                                        style: TextStyle(
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(color: Color(0xFFFF7F00)),
+                                      SizedBox(height: 8),
+                                      Container(
+                                        width: 40,
+                                        height: 4,
+                                        color: Colors.white,
                                       ),
-                                      filled: true,
-                                      hintText: '0',
-                                      fillColor: Colors.white,
+                                      SizedBox(height: 8),
+                                      Text(
+                                        "${denominador1}",
+                                        style: TextStyle(
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 30),
+                                  Text(
+                                    "+",
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 20),
-                                  TextField(
-                                    controller: _denominadorController,
-                                    keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(color: Color(0xFFECA552)),
+                                  SizedBox(width: 30),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        "${numerador2}",
+                                        style: TextStyle(
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(color: Color(0xFFFF7F00)),
+                                      SizedBox(height: 8),
+                                      Container(
+                                        width: 40,
+                                        height: 4,
+                                        color: Colors.white,
                                       ),
-                                      filled: true,
-                                      hintText: '0',
-                                      fillColor: Colors.white,
+                                      SizedBox(height: 8),
+                                      Text(
+                                        "${denominador2}",
+                                        style: TextStyle(
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20),
+                                  Text(
+                                    "=",
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Text(
+                                    "?",
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ],
-                              )
-                            ),
+                              ),
+                              SizedBox(height: 20),
+                              Padding(
+                                  padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                                  child: Column(
+                                    children: [
+                                      TextField(
+                                        controller: _numeradorController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                            borderSide: BorderSide(color: Color(0xFFECA552)),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                            borderSide: BorderSide(color: Color(0xFFFF7F00)),
+                                          ),
+                                          filled: true,
+                                          hintText: '0',
+                                          fillColor: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(height: 20),
+                                      TextField(
+                                        controller: _denominadorController,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                            borderSide: BorderSide(color: Color(0xFFECA552)),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                            borderSide: BorderSide(color: Color(0xFFFF7F00)),
+                                          ),
+                                          filled: true,
+                                          hintText: '0',
+                                          fillColor: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                              ),
+                            ],
                             if (_result == "CORRETO")
                               Column(
                                   children: [
@@ -281,7 +283,7 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
                                     SizedBox(height: 20),
                                     Text(
                                       "${numerador1} / ${denominador1} + ${numerador2} / ${denominador2} = " +
-                                          "${toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2)} + " +
+                                          "${toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2)} / " +
                                           "${toAddFractionsNumerator(denominador1, denominador2, denominador1, denominador2)} => " +
                                           "${_result}",
                                       style: TextStyle(
@@ -303,7 +305,7 @@ class _FractionAdditionGameScreenState extends State<FractionAdditionGameScreen>
                                     SizedBox(height: 20),
                                     Text(
                                       "${numerador1} / ${denominador1} + ${numerador2} / ${denominador2} = " +
-                                          "${toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2)} + " +
+                                          "${toAddFractionsNumerator(numerador1, numerador2, denominador1, denominador2)} / " +
                                           "${toAddFractionsNumerator(denominador1, denominador2, denominador1, denominador2)} => " +
                                           "${_result}",
                                       style: TextStyle(

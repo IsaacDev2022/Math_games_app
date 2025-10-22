@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class GameProgressController extends ChangeNotifier {
-  int pointsCount = 0;
+  int pointsCount = 1200;
 
   void addPoints(int points) {
     pointsCount += points;

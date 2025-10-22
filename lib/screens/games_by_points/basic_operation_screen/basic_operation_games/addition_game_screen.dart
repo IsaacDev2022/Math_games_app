@@ -94,16 +94,17 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         if (counter < 10) ...[
-                          SizedBox(height: 30),
-                          Text(
-                            "${number1} + ${number2} = ?",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold
+                          if (_result == "") ... [
+                            SizedBox(height: 30),
+                            Text(
+                              "${number1} + ${number2} = ?",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold
+                              ),
                             ),
-                          ),
-                          Padding(
+                            Padding(
                               padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
                               child: TextField(
                                 controller: _addController,
@@ -123,15 +124,17 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                                   fillColor: Colors.white,
                                 ),
                               ),
-                          ),
+                            ),
+                          ],
                           if (_result == "CORRETO")
                             Column(
                               children: [
+                                SizedBox(height: 60),
                                 Icon(Icons.emoji_events, color: Colors.yellowAccent, size: 58),
-                                SizedBox(height: 20),
+                                SizedBox(height: 30),
                                 Text("${number1} + ${number2} = ${addNumbers(number1, number2)}",
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 30,
                                     color: Colors.white
                                   )),
                                 SizedBox(height: 20),
