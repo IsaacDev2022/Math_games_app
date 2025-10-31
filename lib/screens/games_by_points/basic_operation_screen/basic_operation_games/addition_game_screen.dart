@@ -148,8 +148,9 @@ class _AdditionGameScreenState extends State<AdditionGameScreen> {
                           if (_result == "ERRADO")
                             Column(
                                 children: [
+                                  SizedBox(height: 60),
                                   Icon(Icons.clear, color: Colors.red, size: 48),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 30),
                                   Text("${number1} + ${number2} = ${addNumbers(number1, number2)}",
                                       style: TextStyle(
                                           fontSize: 20,
