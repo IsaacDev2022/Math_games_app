@@ -13,6 +13,7 @@ class GameProgressController extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Jogos por Pontos
   bool isAdditionUnlocked() => pointsCount >= 50;
   bool isSubtractUnlocked() => pointsCount >= 100;
   bool isMultiplicationUnlocked() => pointsCount >= 150;
@@ -23,4 +24,11 @@ class GameProgressController extends ChangeNotifier {
   bool isSubtractFractionUnlocked() => pointsCount >= 600;
   bool isMultiplicationFractionUnlocked() => pointsCount >= 800;
   bool isDivideFractionUnlocked() => pointsCount >= 1000;
+
+  // Jogos por Tempo
+  bool isAdditionTimedUnlocked() => pointsCount >= 1050;
+  bool isSubtractTimedUnlocked() => pointsCount >= 1100;
+  bool isMultiplicationTimedUnlocked() => pointsCount >= 1200;
+  bool isDivideTimedUnlocked() => pointsCount >= 1300;
+
 }

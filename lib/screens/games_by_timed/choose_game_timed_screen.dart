@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:math_games_app/screens/games_by_timed/basic_operations_timed_screen/basic_operations_timed_screen.dart';
 import 'package:math_games_app/widgets/button_custom.dart';
 
+import '../../widgets/custom_appbar.dart';
 import 'fractions_timed_screen/fractions_timed_screen.dart';
 import 'numerical_expressions_timed_screen/numerical_expressions_timed_screen.dart';
 
@@ -12,17 +13,26 @@ class ChooseGameTimedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(),
       body: Container(
         alignment: Alignment.center,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 100),
+            Text(
+              "Escolha um tipo de jogo",
+              style: TextStyle(
+                  fontSize: 26,
+                  color: Color(0xFFFF9940),
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            SizedBox(height: 100),
             ButtonCustom(
                 heightButton: 60,
-                widthButton: 180,
+                widthButton: 240,
                 textButton: "Jogos de Operações",
-                color: Color(0xFF2196F3),
+                color: Color(0xFFFF9940),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => BasicOperationsTimedScreen())
@@ -32,9 +42,9 @@ class ChooseGameTimedScreen extends StatelessWidget {
             SizedBox(height: 20),
             ButtonCustom(
                 heightButton: 60,
-                widthButton: 180,
+                widthButton: 240,
                 textButton: "Jogos de Frações",
-                color: Color(0xFF2196F3),
+                color: Color(0xFFFF9940),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => FractionsTimedScreen())
@@ -44,9 +54,9 @@ class ChooseGameTimedScreen extends StatelessWidget {
             SizedBox(height: 20),
             ButtonCustom(
                 heightButton: 60,
-                widthButton: 180,
-                textButton: "Jogos de Expressões Numéricas",
-                color: Color(0xFF2196F3),
+                widthButton: 240,
+                textButton: "Jogos de Expressões",
+                color: Color(0xFFFF9940),
                 onPressed: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => NumericalExpressionsTimedScreen())
