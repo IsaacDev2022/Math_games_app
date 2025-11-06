@@ -32,12 +32,14 @@ class _AdditionTimedGameScreenState extends State<AdditionTimedGameScreen> {
   @override
   void initState() {
     super.initState();
-    _startGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _startGame();
+    });
   }
 
   void _startGame() {
     final progress = Provider.of<GameProgressController>(context, listen: false);
-    progress.reset();
+    // progress.reset();
 
     _timeLeft = 60;
     _generateNumbers(progress.pointsCount);
@@ -350,78 +352,6 @@ class _AdditionTimedGameScreenState extends State<AdditionTimedGameScreen> {
               ],
             ),
           )
-      ),
-    );
-
-
-
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 30),
-              Text(
-                "Pontuação: ${progress.pointsCount}",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 20),
-              Text(
-                "Tempo: $_timeLeft s",
-                style: TextStyle(fontSize: 26, color: Colors.red),
-              ),
-              SizedBox(height: 40),
-              Text(
-                "${number1} + ${number2} = ?",
-                style: TextStyle(fontSize: 24),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _addController,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 22),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _timeLeft > 0 ? addNumbersGame : null,
-                child: Text("Verificar"),
-              ),
-              SizedBox(height: 20),
-              if (_result.isNotEmpty)
-                Text(
-                  _result,
-                  style: TextStyle(fontSize: 22),
-                ),
-              Spacer(),
-              if (_timeLeft == 0)
-                Column(
-                  children: [
-                    Text(
-                      "Fim do Jogo!",
-                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    Text("Acertos: $hits   Erros: $errors",
-                        style: TextStyle(fontSize: 20)),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          hits = 0;
-                          errors = 0;
-                          _result = "";
-                          _startGame();
-                        });
-                      },
-                      child: Text("Jogar Novamente"),
-                    ),
-                  ],
-                ),
-              SizedBox(height: 20),
-            ],
-          ),
-        ),
       ),
     );
   }

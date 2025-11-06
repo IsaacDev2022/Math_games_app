@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class GameProgressController extends ChangeNotifier {
-  int pointsCount = 1200;
+  int pointsCount = 300;
 
   void addPoints(int points) {
     pointsCount += points;
@@ -26,9 +26,9 @@ class GameProgressController extends ChangeNotifier {
   bool isDivideFractionUnlocked() => pointsCount >= 1000;
 
   // Jogos por Tempo
-  bool isAdditionTimedUnlocked() => pointsCount >= 1050;
-  bool isSubtractTimedUnlocked() => pointsCount >= 1100;
-  bool isMultiplicationTimedUnlocked() => pointsCount >= 1200;
-  bool isDivideTimedUnlocked() => pointsCount >= 1300;
+  bool isAdditionTimedUnlocked() => pointsCount >= 50;
+  bool isSubtractTimedUnlocked() => pointsCount >= 100;
+  bool isMultiplicationTimedUnlocked() => pointsCount >= 200;
+  bool isDivideTimedUnlocked() => pointsCount >= 300;
 
 }
