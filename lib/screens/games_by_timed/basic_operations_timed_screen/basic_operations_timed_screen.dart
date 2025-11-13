@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_games_app/controller/game_progress_controller.dart';
-import 'package:math_games_app/widgets/card_timed_game_choice_custom.dart';
 import 'package:provider/provider.dart';
 
 import '../../../widgets/card_game_choice_custom.dart';
@@ -36,18 +35,20 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CardTimedGameChoiceCustom(
+                          CardGameChoiceCustom(
                               icon: Icons.add,
                               textCard: "Adição",
                               color: Color(0xFFFF9940),
-                              buttonActivated: progress.isAdditionTimedUnlocked() ? true : false
+                              buttonActivated: progress.isAdditionTimedUnlocked() ? true : false,
+                              typeCard: 'Adição por Tempo',
                           ),
                           SizedBox(width: 10),
-                          CardTimedGameChoiceCustom(
+                          CardGameChoiceCustom(
                               icon: Icons.remove,
                               textCard: "Subtração",
                               color: progress.isSubtractTimedUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                              buttonActivated: progress.isSubtractTimedUnlocked() ? true : false
+                              buttonActivated: progress.isSubtractTimedUnlocked() ? true : false,
+                              typeCard: 'Subtração por Tempo',
                           )
                         ],
                       ),
@@ -55,18 +56,20 @@ class BasicOperationsTimedScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CardTimedGameChoiceCustom(
+                          CardGameChoiceCustom(
                               icon: Icons.close,
                               textCard: "Multiplicação",
                               color: progress.isMultiplicationTimedUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                              buttonActivated: progress.isMultiplicationTimedUnlocked() ? true : false
+                              buttonActivated: progress.isMultiplicationTimedUnlocked() ? true : false,
+                              typeCard: 'Multiplicação por Tempo',
                           ),
                           SizedBox(width: 10),
-                          CardTimedGameChoiceCustom(
+                          CardGameChoiceCustom(
                               icon: Icons.percent,
                               textCard: "Divisão",
                               color: progress.isDivideTimedUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                              buttonActivated: progress.isDivideTimedUnlocked() ? true : false
+                              buttonActivated: progress.isDivideTimedUnlocked() ? true : false,
+                              typeCard: 'Divisão por Tempo',
                           )
                         ],
                       ),

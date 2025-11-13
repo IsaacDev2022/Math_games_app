@@ -39,14 +39,16 @@ class BasicOperationsScreen extends StatelessWidget {
                               icon: Icons.add,
                               textCard: "Adição",
                               color: Color(0xFFFF9940),
-                              buttonActivated: progress.isSubtractUnlocked() ? true : false
+                              buttonActivated: progress.isSubtractUnlocked() ? true : false,
+                              typeCard: 'Adição por Pontos',
                           ),
                           SizedBox(width: 10),
                           CardGameChoiceCustom(
                               icon: Icons.remove,
                               textCard: "Subtração",
                               color: progress.isSubtractUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                              buttonActivated: progress.isSubtractUnlocked() ? true : false
+                              buttonActivated: progress.isSubtractUnlocked() ? true : false,
+                              typeCard: 'Subtração por Pontos',
                           )
                         ],
                       ),
@@ -58,14 +60,16 @@ class BasicOperationsScreen extends StatelessWidget {
                               icon: Icons.close,
                               textCard: "Multiplicação",
                               color: progress.isMultiplicationUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                              buttonActivated: progress.isMultiplicationUnlocked() ? true : false
+                              buttonActivated: progress.isMultiplicationUnlocked() ? true : false,
+                              typeCard: 'Multiplicação por Pontos',
                           ),
                           SizedBox(width: 10),
                           CardGameChoiceCustom(
                               icon: Icons.percent,
                               textCard: "Divisão",
                               color: progress.isDivideUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                              buttonActivated: progress.isDivideUnlocked() ? true : false
+                              buttonActivated: progress.isDivideUnlocked() ? true : false,
+                              typeCard: 'Divisão por Pontos',
                           )
                         ],
                       ),

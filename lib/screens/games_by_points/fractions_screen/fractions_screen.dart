@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:math_games_app/widgets/card_fraction_game_choice_custom.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/game_progress_controller.dart';
@@ -20,7 +19,6 @@ class FractionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustomAppbar(),
-        drawer: CustomDrawer(),
         body: Consumer<GameProgressController>(
             builder: (context, progress, child) {
               return Container(
@@ -41,18 +39,20 @@ class FractionsScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CardFractionGameChoiceCustom(
+                            CardGameChoiceCustom(
                                 icon: Icons.add,
                                 textCard: "Adição",
                                 color: progress.isAdditionFractionUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                                buttonActivated: progress.isAdditionFractionUnlocked() ? true : false
+                                buttonActivated: progress.isAdditionFractionUnlocked() ? true : false,
+                                typeCard: 'Adição Fração por Pontos',
                             ),
                             SizedBox(width: 10),
-                            CardFractionGameChoiceCustom(
+                            CardGameChoiceCustom(
                                 icon: Icons.remove,
                                 textCard: "Subtração",
                                 color: progress.isSubtractFractionUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                                buttonActivated: progress.isSubtractFractionUnlocked() ? true : false
+                                buttonActivated: progress.isSubtractFractionUnlocked() ? true : false,
+                                typeCard: 'Subtração Fração por Pontos',
                             )
                           ],
                         ),
@@ -60,101 +60,25 @@ class FractionsScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CardFractionGameChoiceCustom(
+                            CardGameChoiceCustom(
                                 icon: Icons.close,
                                 textCard: "Multiplicação",
                                 color: progress.isMultiplicationFractionUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                                buttonActivated: progress.isMultiplicationFractionUnlocked() ? true : false
+                                buttonActivated: progress.isMultiplicationFractionUnlocked() ? true : false,
+                                typeCard: 'Multiplicação Fração por Pontos',
                             ),
                             SizedBox(width: 10),
-                            CardFractionGameChoiceCustom(
+                            CardGameChoiceCustom(
                                 icon: Icons.percent,
                                 textCard: "Divisão",
                                 color: progress.isDivideFractionUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                                buttonActivated: progress.isDivideFractionUnlocked() ? true : false
+                                buttonActivated: progress.isDivideFractionUnlocked() ? true : false,
+                                typeCard: 'Divisão Fração por Pontos',
                             )
                           ],
                         ),
                       ],
                     )
-
-                    // ButtonCustom(
-                    //     heightButton: 60,
-                    //     widthButton: 180,
-                    //     textButton: "Adição",
-                    //     color: Color(0xFFFF9940),
-                    //     onPressed: () {
-                    //       Navigator.of(context).push(MaterialPageRoute(
-                    //           builder: (context) => AdditionGameScreen()));
-                    //     }),
-                    // SizedBox(height: 30),
-                    // ButtonCustom(
-                    //     heightButton: 60,
-                    //     widthButton: 180,
-                    //     textButton: "Subtração",
-                    //     color: progress.isSubtractUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                    //     onPressed: () {
-                    //       if (progress.isSubtractUnlocked()) {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (context) => SubtractionGameScreen())
-                    //         );
-                    //       }
-                    //     }
-                    // ),
-                    // SizedBox(height: 30),
-                    // ButtonCustom(
-                    //     heightButton: 60,
-                    //     widthButton: 180,
-                    //     textButton: "Multiplicação",
-                    //     color: progress.isMultiplicationUnlocked() ? Color(
-                    //         0xFFFF9029) : Color(0xFFBDBDBD),
-                    //     onPressed: () {
-                    //       if (progress.isMultiplicationUnlocked()) {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (context) => MultiplicationGameScreen())
-                    //         );
-                    //       }
-                    //     }),
-                    // SizedBox(height: 30),
-                    // ButtonCustom(
-                    //     heightButton: 60,
-                    //     widthButton: 180,
-                    //     textButton: "Divisão",
-                    //     color: progress.isDivideUnlocked() ? Color(0xFFFF9940) : Color(0xFFBDBDBD),
-                    //     onPressed: () {
-                    //       if (progress.isDivideUnlocked()) {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (context) => DivisionGameScreen())
-                    //         );
-                    //       }
-                    //     }),
-                    // SizedBox(height: 30),
-                    // ButtonCustom(
-                    //     heightButton: 60,
-                    //     widthButton: 180,
-                    //     textButton: "Potenciação",
-                    //     color: progress.isPotentiationUnlocked() ? Color(
-                    //         0xFFECA552) : Color(0xFFBDBDBD),
-                    //     onPressed: () {
-                    //       if (progress.isSubtractUnlocked()) {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (context) => PotentiationGameScreen())
-                    //         );
-                    //       }
-                    //     }),
-                    // SizedBox(height: 30),
-                    // ButtonCustom(
-                    //     heightButton: 60,
-                    //     widthButton: 180,
-                    //     textButton: "Radiciação",
-                    //     color: progress.isRootingUnlocked() ? Color(0xFFFF9029) : Color(0xFFBDBDBD),
-                    //     onPressed: () {
-                    //       if (progress.isRootingUnlocked()) {
-                    //         Navigator.of(context).push(MaterialPageRoute(
-                    //             builder: (context) => RootingGameScreen())
-                    //         );
-                    //       }
-                    //     }),
                   ],
                 ),
               );

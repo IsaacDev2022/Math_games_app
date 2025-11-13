@@ -9,14 +9,14 @@ import 'package:provider/provider.dart';
 import '../../../../controller/game_progress_controller.dart';
 import '../../../../widgets/button_custom.dart';
 
-class SignsNumericalExpressionsGame extends StatefulWidget {
-  const SignsNumericalExpressionsGame({super.key});
+class SignsNumericalExpressionsTimedGame extends StatefulWidget {
+  const SignsNumericalExpressionsTimedGame({super.key});
 
   @override
-  State<SignsNumericalExpressionsGame> createState() => _SignsNumericalExpressionsGameState();
+  State<SignsNumericalExpressionsTimedGame> createState() => _SignsNumericalExpressionsTimedGameState();
 }
 
-class _SignsNumericalExpressionsGameState extends State<SignsNumericalExpressionsGame> {
+class _SignsNumericalExpressionsTimedGameState extends State<SignsNumericalExpressionsTimedGame> {
   final TextEditingController _resultController = TextEditingController();
   String _result = "";
   late String currentExpression;
@@ -34,6 +34,7 @@ class _SignsNumericalExpressionsGameState extends State<SignsNumericalExpression
   void initState() {
     super.initState();
     currentExpression = generateExpressionWithGroupers();
+    _startGame();
   }
 
   void _startGame() {
@@ -303,16 +304,16 @@ class _SignsNumericalExpressionsGameState extends State<SignsNumericalExpression
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
-                              SizedBox(
-                                width: 90,
-                                height: 90,
-                                child: CircularProgressIndicator(
-                                  value: counterProgress,
-                                  strokeWidth: 10,
-                                  backgroundColor: Colors.orange.withOpacity(0.2),
-                                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF225385)),
-                                ),
-                              ),
+                              // SizedBox(
+                              //   width: 90,
+                              //   height: 90,
+                              //   child: CircularProgressIndicator(
+                              //     value: counterProgress,
+                              //     strokeWidth: 10,
+                              //     backgroundColor: Colors.orange.withOpacity(0.2),
+                              //     valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF225385)),
+                              //   ),
+                              // ),
                               Container(
                                 width: 65,
                                 height: 65,

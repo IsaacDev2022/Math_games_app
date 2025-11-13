@@ -9,14 +9,14 @@ import 'package:provider/provider.dart';
 import '../../../../controller/game_progress_controller.dart';
 import '../../../../widgets/button_custom.dart';
 
-class NormalNumericExpressionsGame extends StatefulWidget {
-  const NormalNumericExpressionsGame({super.key});
+class NormalNumericalExpressionsTimedGame extends StatefulWidget {
+  const NormalNumericalExpressionsTimedGame({super.key});
 
   @override
-  State<NormalNumericExpressionsGame> createState() => _NormalNumericExpressionsGameState();
+  State<NormalNumericalExpressionsTimedGame> createState() => _NormalNumericalExpressionsTimedGameState();
 }
 
-class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsGame> {
+class _NormalNumericalExpressionsTimedGameState extends State<NormalNumericalExpressionsTimedGame> {
   final TextEditingController _resultController = TextEditingController();
   String _result = "";
   late String currentExpression;
@@ -297,16 +297,16 @@ class _NormalNumericExpressionsGameState extends State<NormalNumericExpressionsG
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
-                              SizedBox(
-                                width: 90,
-                                height: 90,
-                                child: CircularProgressIndicator(
-                                  value: counterProgress,
-                                  strokeWidth: 10,
-                                  backgroundColor: Colors.orange.withOpacity(0.2),
-                                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF225385)),
-                                ),
-                              ),
+                              // SizedBox(
+                              //   width: 90,
+                              //   height: 90,
+                              //   child: CircularProgressIndicator(
+                              //     value: counterProgress,
+                              //     strokeWidth: 10,
+                              //     backgroundColor: Colors.orange.withOpacity(0.2),
+                              //     valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF225385)),
+                              //   ),
+                              // ),
                               Container(
                                 width: 65,
                                 height: 65,

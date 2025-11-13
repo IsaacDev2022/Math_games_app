@@ -8,14 +8,14 @@ import 'package:provider/provider.dart';
 import '../../../../controller/game_progress_controller.dart';
 import '../../../../widgets/button_custom.dart';
 
-class FractionMultiplicationGameScreen extends StatefulWidget {
-  const FractionMultiplicationGameScreen({super.key});
+class FractionMultiplicationTimedGameScreen extends StatefulWidget {
+  const FractionMultiplicationTimedGameScreen({super.key});
 
   @override
-  State<FractionMultiplicationGameScreen> createState() => _FractionMultiplicationGameState();
+  State<FractionMultiplicationTimedGameScreen> createState() => _FractionMultiplicationTimedGameState();
 }
 
-class _FractionMultiplicationGameState extends State<FractionMultiplicationGameScreen> {
+class _FractionMultiplicationTimedGameState extends State<FractionMultiplicationTimedGameScreen> {
   final TextEditingController _numeradorController = TextEditingController();
   final TextEditingController _denominadorController = TextEditingController();
   String _result = "";
